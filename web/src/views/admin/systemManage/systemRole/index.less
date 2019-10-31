@@ -1,0 +1,77 @@
+// 树操作按钮样式
+.node-tree-oper {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 20px;
+  width: 80px;
+  height: 100%;
+  padding-right: 16px;
+  padding-left: 4px;
+  text-align: right;
+  color: #023c71;
+  &:hover {
+    .node_tree_bth {
+      display: block;
+    }
+  }
+  .node_tree_bth {
+    display: none;
+    position: absolute;
+    right: 0;
+    line-height: 22px;
+    padding: 4px 0px 0px 0px;
+    margin-left: 10px;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    box-shadow: 1px 2px 1px #cccccc;
+    font-size: 12px;
+    background: #ffffff;
+    z-index: 100;
+    &::after {
+      content: '';
+      position: absolute;
+      top: -4px;
+      right: 20px;
+      width: 6px;
+      height: 6px;
+      border-left: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      background: @bgcolor-container;
+      transform: rotate(135deg);
+    }
+    a {
+      display: block;
+      line-height: 34px;
+      text-align: center;
+      padding: 0px 8px;
+      color: #333;
+      &:hover {
+        color: #023c71;
+      }
+      p {
+        display: block;
+        text-align: center;
+        color: @font-color-light;
+      }
+    }
+  }
+  .tree-position-top {
+    top: 24px;
+  }
+  .tree-position-bottom {
+    bottom: 20px;
+    &::after {
+      top: inherit;
+      bottom: -4px;
+      transform: rotate(-45deg);
+    }
+  }
+}
+.el-tree-node__content {
+  &:hover {
+    .node-tree-oper {
+      display: block;
+    }
+  }
+}

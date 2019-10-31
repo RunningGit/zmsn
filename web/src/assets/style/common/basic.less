@@ -1,0 +1,9 @@
+/*
+* basic.less 和 common.less 有什么区别？
+* less变量是作用域是局部的，后采用sass-resources-loader依赖实现全局作用域
+* 基于实现全局作用域原理，basic只引入存放变量型的文件
+* by xiaofeng
+*/
+
+// 引入全局公用变量
+@import '~@/assets/style/common/import-lib-var';

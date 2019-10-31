@@ -1,0 +1,63 @@
+@import './common/variables';
+
+@checkbox-prefix-cls: ~'@{dy-prefix}-checkbox';
+
+.@{checkbox-prefix-cls} {
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  display: inline-block;
+  font-size: 0;
+  color: darken(@checkbox-color-base, 20%);
+
+  + .@{checkbox-prefix-cls} {
+    margin-left: 10px;
+  }
+
+  .dy-icon {
+    font-size: 14px;
+    color: @checkbox-color-base;
+  }
+
+  &.dy-checked {
+    .@{checkbox-prefix-cls}-text,
+    .dy-icon {
+      color: @checkbox-color-checked;
+      transition: color 0.2s ease;
+    }
+  }
+
+  input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0;
+  }
+
+  span {
+    position: relative;
+    font-size: 14px;
+
+    & + span {
+      margin-left: 5px;
+    }
+  }
+
+  &:hover {
+    .dy-icon {
+      color: @primary-color;
+    }
+  }
+
+  &.dy-disabled {
+    cursor: not-allowed;
+
+    .dy-icon,
+    .@{checkbox-prefix-cls}-text {
+      color: @input-disabled-color;
+    }
+  }
+}

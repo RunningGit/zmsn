@@ -1,0 +1,140 @@
+// ------ 前缀，组件类名必须引入 ------
+@dy-prefix: dy;
+
+// ------ Colors ------
+// #3e6cc4
+@primary-color: #023c71;
+@normal-color: #999;
+@info-color: #3eb9f6;
+@success-color: #6ec884;
+@warning-color: #ffb400;
+@error-color: #ec5343;
+@disabled-color: #c0c4cc;
+
+// ------ Font ------
+// 字体基本
+@font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, 'PingFang SC',
+  'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft Yahei', sans-serif;
+@font-size-base: 14px;
+@font-size-sm: @font-size-base - 2px;
+@font-size-lg: @font-size-base + 2px;
+// 文本字体颜色
+@text-color: #333;
+
+// ----- Border ------
+@border-color-base: #ddd;
+@border-width-base: 1px;
+@border-style-base: solid;
+
+@border-radius-base: 0;
+@border-radius-sm: 0;
+
+@disabled-bg : #fafafa;
+@disabled-border : darken(@disabled-bg, 5%);
+
+// ------ Animation ------
+// @ease-out : cubic-bezier(0.215, 0.61, 0.355, 1);
+@ease-in : cubic-bezier(0.55, 0.055, 0.675, 0.19);
+// @ease-in-out : cubic-bezier(0.645, 0.045, 0.355, 1);
+// @ease-out-back : cubic-bezier(0.12, 0.4, 0.29, 1.46);
+// @ease-in-back : cubic-bezier(0.71, -0.46, 0.88, 0.6);
+// @ease-in-out-back : cubic-bezier(0.71, -0.46, 0.29, 1.46);
+@ease-out-circ : cubic-bezier(0.08, 0.82, 0.17, 1);
+@ease-in-circ : cubic-bezier(0.6, 0.04, 0.98, 0.34);
+// @ease-in-out-circ : cubic-bezier(0.78, 0.14, 0.15, 0.86);
+// @ease-out-quint : cubic-bezier(0.23, 1, 0.32, 1);
+// @ease-in-quint : cubic-bezier(0.755, 0.05, 0.855, 0.06);
+// @ease-in-out-quint : cubic-bezier(0.86, 0, 0.07, 1);
+
+// ------ 以下针对组件 ------
+// Button
+@btn-font-weight: 400;
+@btn-border-radius-base: @border-radius-base;
+@btn-border-radius-sm: @border-radius-sm;
+
+@btn-base-color: #fff;
+@btn-base-bg: #fff;
+
+@btn-default-color: @text-color;
+@btn-default-bg: #fff;
+@btn-default-border: @border-color-base;
+
+@btn-primary-color: @primary-color;
+@btn-success-color: @success-color;
+@btn-danger-color: @error-color;
+@btn-info-color: @info-color;
+@btn-warning-color: @warning-color;
+
+@btn-disable-color: @disabled-color;
+@btn-disable-bg: @disabled-bg;
+@btn-disable-border: @border-color-base;
+
+@btn-height-base: 32px;
+@btn-height-lg: 40px;
+@btn-height-sm: 24px;
+
+@btn-padding-base: 0 16px;
+@btn-padding-lg: 0 22px;
+@btn-padding-sm: 0 12px;
+
+// Input
+@input-height-base: 32px;
+
+@input-padding-horizontal-base: 10px;
+@input-padding-vertical-base: 7px;
+
+@input-border-width-base: @border-width-base;
+@input-border-style-base: @border-style-base;
+@input-border-color-base: @border-color-base;
+@input-border-color-active: @primary-color;
+
+@input-font-size-base: @font-size-base;
+
+@input-color-base: @text-color;
+@input-bgcolor-base: #fff;
+
+@input-disabled-color: @disabled-color;
+@input-disabled-bordercolor: @disabled-border;
+@input-disabled-bgcolor: @disabled-bg;
+
+@input-clear-color: @normal-color;
+
+// Radio
+@radio-color-base: @normal-color;
+@radio-color-checked: @primary-color;
+@radio-disabled-color: @disabled-color;
+
+// Checkbox
+@checkbox-color-base: @normal-color;
+@checkbox-color-checked: @primary-color;
+@checkbox-disabled-color: @disabled-color;
+
+// Select
+@select-color-base: @text-color;
+@select-color-active: @primary-color;
+@select-list-bgcolor: #fff;
+
+@select-disabled-color: @disabled-color;
+@select-disabled-bgcolor: @disabled-bg;
+
+@select-border-radius: 4px;
+
+// Pagination
+@pagination-color-base: @text-color;
+@pagination-color-active: @primary-color;
+
+@pagination-disabled-color: @disabled-color;
+@pagination-disabled-bordercolor: @disabled-border;
+@pagination-disabled-bgcolor: @disabled-bg;
+
+@pagination-height-base: 32px;
+
+// table
+@table-color-base: @text-color;
+@table-color-active: #f4f7f9;
+@table-color-empty: @disabled-color;
+
+@table-icon-color: @normal-color;
+@table-thead-bgColor: #f5f5f5;
+
+@table-border-color: @border-color-base;

@@ -1,0 +1,328 @@
+/**
+ * 自定义ElementUI
+ */
+// 弹出框
+.dsf_defined_dialog {
+  .el-dialog__header {
+    background-color: @color-pointed;
+    padding: 0 20px;
+    line-height: 44px;
+    .el-dialog__title {
+      color: #fff;
+      vertical-align: middle;
+      font-size: 14px;
+    }
+    .el-dialog__headerbtn {
+      top: 12px;
+      .el-dialog__close {
+        color: #fff;
+      }
+    }
+  }
+  .el-dialog__body {
+    padding: 20px;
+  }
+  .el-dialog__footer {
+    padding: 13px;
+    font-size: 0;
+    background-color: #f1f1f1;
+  }
+}
+
+// tabs下拉样式覆盖
+.el-dropdown-menu__item:focus,
+.el-dropdown-menu__item:not(.id-disabled):hover {
+  background-color: @color-default !important;
+  color: @color-pointed !important;
+}
+
+// 页面头部下拉气泡框样式覆盖
+.dsf_header {
+  .el-dropdown-menu__item--divided:before,
+  .el-menu,
+  .el-menu--horizontal > .el-menu-item:not(.is-disabled):focus,
+  .el-menu--horizontal > .el-menu-item:not(.is-disabled):hover,
+  .el-menu--horizontal > .el-submenu .el-submenu__title:hover {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  .el-submenu__title i,
+  .el-menu--horizontal > .el-submenu .el-submenu__title {
+    color: @color-default;
+  }
+  .dsf_header_navbar {
+    .el-dropdown {
+      height: 42px;
+    }
+  }
+}
+
+// 页面左侧菜单
+.dsf_aside {
+  .el-menu {
+    background-color: @base-bgColor;
+    border-right: 0;
+    // 菜单关闭的时候样式覆盖
+    .el-submenu {
+      > .el-submenu__title {
+        i {
+          display: inline-block;
+        }
+        .el-submenu__icon-arrow {
+          display: none;
+        }
+        .icon-caret-down {
+          display: none;
+        }
+        .icon-caret-right {
+          display: inline-block;
+          font-size: 10px;
+          color: #666;
+          transform: scale(0.8);
+        }
+      }
+    }
+    // 菜单打开的时候样式覆盖
+    .is-opened {
+      > .el-submenu__title {
+        .icon-caret-right {
+          display: none;
+        }
+        .icon-caret-down {
+          display: inline-block;
+          font-size: 10px;
+          color: #666;
+          transform: scale(0.8);
+        }
+      }
+    }
+  }
+  .el-menu-item,
+  .el-submenu__title {
+    height: 40px;
+    line-height: 40px;
+    &:hover {
+      background-color: #ddd;
+    }
+  }
+  .el-submenu {
+    .el-submenu__title {
+      padding-left: 8px !important;
+    }
+  }
+  .el-menu-item.is-active {
+    color: #303133;
+  }
+  .el-menu .active {
+    & > li {
+      color: @color-default;
+      background-color: @color-pointed;
+    }
+  }
+  .el-menu-item {
+    .dsf_aside_home {
+      .dsf_aside_home_title {
+        display: inline-block;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+// 标签tabs样式覆盖
+.dsf_tabs {
+  .el-tabs__item.is-active {
+    color: @color-pointed !important;
+  }
+  .el-tabs__item:focus.is-active.is-focus:not(:active) {
+    box-shadow: none !important;
+  }
+  .el-tabs__item {
+    color: #666;
+    padding: 0 10px;
+    &:hover {
+      color: @color-pointed !important;
+    }
+  }
+  .el-tabs__active-bar {
+    left: -10px;
+    height: 3px;
+    background-color: @color-pointed !important;
+  }
+  .el-tabs--top {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .el-tabs__header {
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 40px 0 20px;
+    background-color: @color-default;
+    border-bottom: 1px solid @border-color;
+    z-index: 8;
+    margin: 0;
+  }
+  .el-tabs__nav-wrap::after {
+    height: 1px;
+    background-color: @border-color;
+  }
+  .el-tabs__content {
+    height: 100%;
+    overflow: auto;
+    padding-top: 40px;
+    .el-tab-pane {
+      height: 100%;
+      > div {
+        height: 100%;
+        > div {
+          height: 100%;
+        }
+      }
+    }
+    .el-dropdown {
+      position: absolute;
+      top: 0;
+      right: 0;
+      cursor: pointer;
+      background: #eee;
+      z-index: 8;
+      &:hover {
+        opacity: 0.8;
+      }
+      .el-icon-arrow-down {
+        display: block;
+        width: 100%;
+        line-height: 39px;
+        padding: 0 13px;
+        color: @font-color-primary;
+      }
+    }
+  }
+}
+
+// 选择时间日期样式覆盖
+.el-date-editor {
+  float: left;
+  width: 300px;
+  line-height: 30px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  input {
+    height: 30px;
+    line-height: 30px;
+    margin-left: 5px;
+    border: 0px;
+  }
+  i {
+    line-height: 30px;
+  }
+  .el-input__icon.el-icon-date {
+    color: @color-pointed;
+  }
+}
+.el-picker-panel {
+  .el-date-table td.current:not(.disabled) span {
+    background-color: @color-pointed;
+    color: #fff;
+  }
+  .el-date-table td.today span {
+    color: @color-pointed;
+  }
+}
+
+// 角色权限列表样式覆盖
+.dsf_rolelist {
+  // 角色权限弹框中的节点树样式覆盖
+  .el-tree {
+    .el-checkbox__input.is-checked + .el-checkbox__label {
+      color: @color-pointed;
+    }
+    .el-checkbox__input.is-checked .el-checkbox__inner,
+    .el-checkbox__input.is-indeterminate .el-checkbox__inner {
+      background-color: #fff !important;
+      border-color: #ddd !important;
+      &::after {
+        border-color: @color-pointed;
+      }
+    }
+    .el-checkbox__inner:hover,
+    .el-checkbox__inner:focus {
+      border-color: @color-pointed;
+    }
+    .el-checkbox__input.is-focus .el-checkbox__inner {
+      border-color: @color-pointed;
+    }
+    .el-checkbox__input.is-indeterminate .el-checkbox__inner {
+      &::before {
+        background-color: @color-pointed !important;
+      }
+    }
+  }
+  // 角色权限列表的复选框样式覆盖
+  .el-checkbox__input.is-checked .el-checkbox__inner,
+  .el-checkbox__input.is-indeterminate .el-checkbox__inner {
+    border-color: @color-pointed;
+    background-color: @color-pointed;
+  }
+  .el-checkbox__input.is-checked + .el-checkbox__label {
+    color: @color-pointed;
+  }
+  .el-checkbox__inner:hover,
+  .el-checkbox__inner:focus,
+  .el-checkbox__input.is-focus .el-checkbox__inner {
+    border-color: @color-pointed;
+  }
+}
+
+// el-tree样式全局覆盖
+.treebox {
+  .el-tree {
+    color: #333;
+    .el-tree-node > .el-tree-node__children {
+      overflow: visible;
+    }
+    // 非叶子节点的箭头大小和颜色
+    .el-tree-node__expand-icon {
+      font-size: 16px;
+      color: #999;
+    }
+    // 叶子节点的箭头颜色
+    .el-tree-node__expand-icon.is-leaf {
+      color: transparent;
+    }
+    .el-tree-node:focus > .el-tree-node__content {
+      background-color: #fff;
+    }
+    .el-tree-node:focus > .el-tree-node__content:hover {
+      background-color: #fff;
+    }
+    // 节点选中样式，默认不选中时候
+    .is-focusable {
+      > .el-tree-node__content {
+        .icon-bumen-shixin {
+          display: none;
+        }
+      }
+    }
+    // 节点被激活以及根节点默认被选中
+    .is-current {
+      > .el-tree-node__content {
+        .treebox_node_label {
+          font-weight: bold;
+          color: #345077;
+        }
+        .icon-bumen-shixin {
+          display: inline-block;
+        }
+        .icon-bumen-xuxin {
+          display: none;
+        }
+      }
+    }
+  }
+}

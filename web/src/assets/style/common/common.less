@@ -1,0 +1,388 @@
+/*
+* basic.less 和 common.less 有什么区别？
+* less变量是作用域是局部的，后采用sass-resources-loader依赖实现全局作用域
+* 基于实现全局作用域原理，basic只引入存放变量型的文件
+* by xiaofeng
+*/
+
+// 引入 过渡动画
+@import './transition.less';
+
+// 引入 覆盖elementUI 样式
+@import './my-elementui.less';
+
+// 引入 系统管理的公共样式
+@import '~@/assets/style/system/system';
+// 后台管理界面公共样式
+
+// ** 通配符配置 ** //
+* {
+  box-sizing: border-box;
+}
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+input,
+button,
+textarea,
+p,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  border: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption,
+em,
+strong,
+th {
+  font-style: normal;
+  font-weight: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+input,
+button,
+textarea,
+select {
+  border: none;
+  outline: none;
+  font: 14px/1.4 'Microsoft YaHei', tahoma, arial;
+}
+
+button {
+  cursor: pointer;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+i,
+em {
+  font-style: normal;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+}
+
+body {
+  font-family: -apple-system-font, BlinkMacSystemFont, 'Helvetica Neue',
+    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei UI', 'Microsoft YaHei',
+    Arial, sans-serif;
+  font-size: @font14;
+  line-height: 1.4;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: 'liga', 'kern';
+  background-color: @base-bgColor;
+}
+
+pre {
+  font: 14px/1.6 'Microsoft YaHei', tahoma, arial;
+  color: @font-color-primary;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  *white-space: normal;
+}
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+  border: 1px solid #fff;
+  border-radius: 6px;
+  background: #ddd;
+}
+
+/*定义文本不换行，超出省略号*/
+.nowrap {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+// 去除input框自动填充内容背景颜色为黄色
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+}
+
+// 去除IE下默认的文本清除按钮
+input::-ms-clear {
+  display: none;
+}
+input[type='password']::-ms-reveal {
+  display: none;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: @placeholder-color;
+} /* WebKit browsers */
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+  color: @placeholder-color;
+} /* Mozilla Firefox 4 to 18 */
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  color: @placeholder-color;
+} /* Mozilla Firefox 19+ */
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: @placeholder-color;
+} /* Internet Explorer 10+ */
+//---------END-------------
+
+// ** 通配符配置 end ** //
+
+// 左右浮动
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+// 清除浮动
+.clearfix {
+  &:after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    clear: both;
+  }
+}
+//table 自定义表格
+.dy_table {
+  margin-bottom: 10px;
+  color: @font-color-primary;
+  text-align: center;
+  position: relative;
+  table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: separate;
+    tr {
+      background-color: @color-default;
+      text-align: left;
+      th {
+        height: 44px;
+        padding: 0px;
+        padding-left: 30px;
+        border-top: 1px solid @border-color;
+        border-bottom: 1px solid @border-color;
+        border-left: 0;
+        text-align: left;
+        font-weight: 700;
+        color: @font-color-default;
+        background-color: @base-bgColor;
+        &:first-child {
+          font-weight: normal;
+        }
+        i {
+          color: #999;
+        }
+      }
+      .table_operating {
+        text-align: right;
+        padding-left: 0px;
+        padding-right: 30px;
+      }
+      .edit_now {
+        text-align: right;
+        padding-left: 0px;
+        padding-right: 35px;
+      }
+      td {
+        height: 44px;
+        border-bottom: 1px solid @border-color;
+        transition: background-color 0.25s ease;
+        word-break: break-all;
+        padding-left: 30px;
+        &:not(.edit_now) {
+          width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .edit_item {
+          padding: 0px 10px;
+          input {
+            height: 35px;
+          }
+        }
+        a {
+          display: inline-block;
+          height: 12px;
+          line-height: 12px;
+          padding: 0px 6px 0px 8px;
+          border-left: 2px solid @border-color;
+          &:nth-child(1) {
+            border-left: 0px;
+          }
+          &:hover {
+            opacity: 0.7;
+          }
+          &.green {
+            color: #6ac37b;
+          }
+          &.theme {
+            color: @primary-color;
+          }
+          &.error {
+            color: #ff2323;
+          }
+          &.warning {
+            color: @warning;
+          }
+        }
+      }
+      .edit {
+        a {
+          &:nth-child(1) {
+            color: @dy_color01;
+          }
+          &:nth-child(2) {
+            color: @dy_color02;
+          }
+          &:nth-child(3) {
+            color: @dy_color03;
+          }
+          &:nth-child(4) {
+            color: @dy_color04;
+          }
+          &:nth-child(5) {
+            color: @dy_color05;
+          }
+          &.error {
+            color: #ff2323;
+          }
+        }
+        .edit_inline {
+          display: inline-block;
+          margin: 0 auto;
+          a {
+            float: left;
+          }
+        }
+      }
+      .dy_table_row:hover {
+        background-color: #f5f7fa;
+      }
+      &.dy_table_row:hover {
+        td {
+          background-color: #f5f7fa;
+        }
+      }
+      &.dy_table_tips {
+        position: relative;
+        width: 100%;
+        height: 45px;
+        line-height: 45px;
+        border-right: 1px solid @border-color;
+        td {
+          position: absolute;
+          left: 0;
+          width: 100%;
+          line-height: 45px;
+          color: @font-color-light;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .gray {
+    border: 1px solid @border-color;
+    border-bottom: 0px;
+    tr {
+      background-color: #fff;
+      th {
+        border-right: 0px;
+        background: @base-bgColor;
+        color: @font-color-default;
+      }
+    }
+    td {
+      border-right: 0px;
+      &:nth-child(1) {
+        border-left: 0px;
+      }
+    }
+  }
+}
+
+// 表格select选择按钮
+.dy_checkbox,
+.dy-checkAll {
+  position: relative;
+  margin-right: 10px;
+  cursor: pointer;
+  &:last-child {
+    margin-right: 0px;
+  }
+  .dy_checked_input {
+    .iconfont {
+      font-size: 14px;
+      cursor: pointer;
+      // color: @bthColor-option;
+      color: #bbb;
+    }
+    .icon-check {
+      color: @color-pointed;
+    }
+  }
+  input[type='checkbox'] {
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 15px;
+    height: 15px;
+    opacity: 0;
+    z-index: 1;
+  }
+}

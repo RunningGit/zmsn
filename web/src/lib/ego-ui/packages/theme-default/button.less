@@ -1,0 +1,231 @@
+@import './common/variables';
+
+/* Button size */
+.button-size(@height, @padding, @font-size, @border-radius) {
+  height: @height;
+  padding: @padding;
+  // 行高 = 高度减去边框宽度*2
+  // line-height: @height - @border-width-base * 2;
+  // vertical-align: middle;
+  border-radius: @border-radius;
+  font-size: @font-size;
+  font-weight: 500;
+  outline: none;
+  // circle
+  &.dy-circle {
+    min-width: auto;
+    // 圆形 => width === height
+    width: @height;
+    padding: 0;
+    border-radius: 50%;
+  }
+}
+
+/**
+ * Button color
+ * Iscolor => 判断是否为颜色值
+**/
+.mixin-border(@border-color) when (Iscolor(@border-color)) {
+  border-color: @border-color;
+  &:hover:not(.dy-disabled) {
+    background: lighten(@border-color, 10%);
+  }
+}
+.button-color(@font-color, @base-color, @border-color) {
+  color: @font-color;
+  border-color: @base-color;
+  background: @base-color;
+  transition: all 0.1s @ease-in-circ;
+
+  &:after {
+    border-color: @base-color;
+  }
+
+  &:hover:not(.dy-disabled) {
+    cursor: pointer;
+    background: lighten(@base-color, 8%);
+  }
+
+  .mixin-border(@border-color);
+
+  &:active:not(.dy-disabled) {
+    background: darken(@base-color, 5%);
+    &:after {
+      display: block;
+    }
+  }
+
+  &:focus {
+    // background: lighten(@base-color, 8%);
+
+    span,
+    i {
+      position: relative;
+    }
+  }
+
+  // outline
+  &.dy-outline {
+    color: @base-color;
+    border-color: @base-color;
+    // background: @btn-base-bg;
+    background: transparent;
+
+    &:hover {
+      border-color: lighten(@base-color, 12%);
+      color: lighten(@base-color, 12%);
+      background: transparent;
+    }
+
+    &:focus {
+      border-color: darken(@base-color, 12%);
+      color: darken(@base-color, 12%);
+      background: transparent;
+    }
+  }
+
+  // disabled
+  &.dy-disabled {
+    cursor: not-allowed;
+    color: #fff;
+    border-color: lighten(@base-color, 10%);
+    background: lighten(@base-color, 10%);
+  }
+}
+
+// Button专属前缀 `dy-btn`
+@btn-prefix-cls: ~'@{dy-prefix}-btn';
+
+.@{btn-prefix-cls} {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  line-height: 1;
+  border-style: @border-style-base;
+  border-width: @border-width-base;
+  border-color: @border-color-base;
+  white-space: nowrap;
+
+  &:after {
+    display: none;
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    bottom: -1px;
+    right: -1px;
+    border-radius: inherit;
+    border: 0 solid transparent;
+    opacity: 0.4;
+    animation: buttonEffect 0.25s;
+  }
+
+  .dy-icon {
+    vertical-align: middle;
+    font-size: 12px;
+
+    + span {
+      margin-left: 5px;
+      vertical-align: middle;
+    }
+  }
+
+  &-normal {
+    min-width: 76px;
+    .button-size(
+      @btn-height-base,
+      @btn-padding-base,
+      @font-size-base,
+      @btn-border-radius-base
+    );
+  }
+
+  &-large {
+    .button-size(
+      @btn-height-lg,
+      @btn-padding-lg,
+      @font-size-base + 2,
+      @btn-border-radius-base
+    );
+  }
+
+  &-small {
+    .button-size(
+      @btn-height-sm,
+      @btn-padding-sm,
+      @font-size-base - 2,
+      @btn-border-radius-base
+    );
+  }
+
+  &-default {
+    .button-color(@btn-default-color, @btn-default-bg, @btn-default-border);
+  }
+
+  &-primary {
+    .button-color(@btn-base-color, @btn-primary-color, 0);
+  }
+
+  &-success {
+    .button-color(@btn-base-color, @btn-success-color, 0);
+  }
+
+  &-danger {
+    .button-color(@btn-base-color, @btn-danger-color, 0);
+  }
+
+  &-info {
+    .button-color(@btn-base-color, @btn-info-color, 0);
+  }
+
+  &-warning {
+    .button-color(@btn-base-color, @btn-warning-color, 0);
+  }
+
+  &-text {
+    min-width: auto;
+    padding-left: 0;
+    padding-right: 0;
+    .button-color(@btn-primary-color, transparent, 0);
+  }
+
+  .dy-icon-loading {
+    display: inline-block;
+    animation: loading 1.5s linear infinite;
+  }
+
+  &-loading {
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
+  // &.dy-disabled {
+  //   cursor: not-allowed;
+  //   // .button-color(@btn-disable-color, @btn-disable-bg, @btn-disable-border);
+  //   color: @btn-disable-color;
+  //   border-color: @btn-disable-border;
+  //   background: @btn-disable-bg;
+  // }
+}
+
+// 外围涟漪动画
+
+@keyframes buttonEffect {
+  to {
+    opacity: 0;
+    top: -8px;
+    left: -8px;
+    bottom: -8px;
+    right: -8px;
+    border-width: 8px;
+  }
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

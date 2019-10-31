@@ -1,0 +1,23 @@
+@import './common/variables';
+
+@radio-prefix-cls: ~'@{dy-prefix}-radio';
+
+.@{radio-prefix-cls} {
+  &-group {
+    display: inline-block;
+    font-size: 0;
+
+    &.dy-disabled {
+      .@{radio-prefix-cls} {
+        cursor: not-allowed;
+      }
+
+      .dy-icon,
+      .@{radio-prefix-cls}-text,
+      .dy-checked .dy-icon,
+      .dy-checked .@{radio-prefix-cls}-text {
+        color: @radio-disabled-color;
+      }
+    }
+  }
+}

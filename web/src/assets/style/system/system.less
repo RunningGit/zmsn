@@ -1,0 +1,578 @@
+/**
+ * 基础框架公用样式
+ * tips: 针对基础框架整个系统业务设置的公共样式
+ */
+
+// 边距样式
+.marginR20 {
+  margin-right: 20px;
+}
+.marginR10 {
+  margin-right: 10px;
+}
+.marginB10 {
+  margin-bottom: 10px;
+}
+.marginL10 {
+  margin-left: 10px;
+}
+.marginT10{
+  margin-top: 10px;
+}
+.marginT20 {
+  margin-top: 20px;
+}
+.marginB20 {
+  margin-bottom: 20px;
+}
+.marginL20 {
+  margin-left: 20px;
+}
+
+// 表格暂无数据td栏的下边框为none
+.dy_table .table_noSelected {
+  tr th:first-child {
+    font-weight: 700;
+  }
+}
+
+// 组织树样式覆盖
+.treebox {
+  height: calc(~'100% - 64px');
+  overflow: auto;
+  .icon-bumen-xuxin,
+  .icon-bumen-shixin {
+    margin-right: 10px;
+    vertical-align: middle;
+    font-size: 20px;
+    color: #345077;
+  }
+  // 节点长度
+  .treebox-node {
+    width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .el-tree-node__content {
+    position: relative;
+    &:hover {
+      background-color: #f5f5f5;
+    }
+    // 权限不够禁用样式,样式优先级最高
+    .treebox-node-disabled {
+      cursor: not-allowed;
+      .icon-bumen-xuxin {
+        display: inline-block !important;
+        color: #ccc !important;
+      }
+      .treebox_node_label {
+        font-weight: normal !important;
+        color: #ccc !important;
+      }
+    }
+  }
+}
+
+// admin操作界面
+.admin_operate {
+  display: inline-block;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  &:hover {
+    .edit_inline {
+      display: block;
+    }
+  }
+  .icon-operation-group {
+    font-size: 14px;
+    color: @color-pointed;
+  }
+  .edit_inline {
+    display: none;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    min-width: 100%;
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 2px 2px 5px #ddd;
+    background-color: #fff;
+    text-align: center;
+    transform: translateY(-50%);
+    z-index: 888;
+    white-space: nowrap;
+  }
+}
+
+// 表格状态筛选下拉提示框
+.stateOptions_box {
+  position: relative;
+  cursor: pointer;
+  .stateOptions_box-ul {
+    position: absolute;
+    left: 17%;
+    width: 120px;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 4px #ccc;
+    border-radius: 4px;
+    font-size: 12px;
+    text-align: center;
+    background-color: #fff;
+    z-index: 888;
+    li {
+      display: block;
+      color: #333;
+      &:hover {
+        color: #3eb9f5;
+        cursor: pointer;
+      }
+    }
+    li + li {
+      margin-top: 17px;
+    }
+  }
+}
+
+.state_sliderbox {
+  position: absolute;
+  display: block;
+  top: 37px;
+  left: -10px;
+  width: 120px;
+  background-color: #ffffff;
+  border: @border_primary;
+  text-align: center;
+  font-weight: normal;
+  z-index: 5;
+  ul {
+    padding: 12px 0px;
+    li {
+      line-height: 34px;
+      color: #333333;
+      &:hover {
+        color: @color-pointed;
+      }
+      &.active_li {
+        color: @color-pointed;
+      }
+    }
+  }
+}
+// 表格状态筛选下拉提示框----------end
+
+// 角色权限列表
+.dsf_rolelist {
+  margin-bottom: 15px;
+  .dsf_roleName_item {
+    display: inline-block;
+    position: relative;
+    max-width: 100%;
+    .dsf_roleName_txt {
+      width: 100%;
+    }
+  }
+  .dsf_rolelist_item {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px #ccc;
+    font-size: 12px;
+    text-align: center;
+    background-color: #fff;
+    z-index: 8;
+    &::after {
+      content: '';
+      position: absolute;
+      top: -4px;
+      left: 50%;
+      width: 6px;
+      height: 6px;
+      border-left: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      background: #fff;
+      transform: rotate(135deg);
+    }
+  }
+  .dsf_rolelist_pop {
+    overflow-y: auto;
+    width: 198px;
+    height: 225px;
+  }
+}
+
+//页面内容布局css
+.dsf_content {
+  height: 100%;
+  padding: 20px 20px 30px;
+  .dsf_content_section {
+    position: relative;
+    height: 100%;
+    overflow-y: auto;
+    border: 1px solid @border-color;
+    box-shadow: 3px 4px 12px #ddd;
+    background-color: @color-default;
+
+    // 表格头上btn/input样式
+    .dsf_search_condition {
+      font-size: 0;
+      // 选择日期样式,消息日志
+      .dsf_messagelog_time {
+        line-height: 32px;
+        font-size: 14px;
+        color: #333;
+      }
+      // 消息日志
+      .dsf_messagelog_line {
+        width: 15px;
+        height: 32px;
+        line-height: 32px;
+        font-size: 14px;
+        text-align: center;
+      }
+      &:after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        clear: both;
+      }
+    }
+
+    // 管理组和角色模块页面标题
+    .dsf_group {
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      color: @color-pointed;
+      .icon-angle-double-left {
+        margin-right: 5px;
+        font-size: 12px;
+        color: #aeaeae;
+      }
+      .dsf_group_title {
+        padding-left: 10px;
+        margin-left: 10px;
+        border-left: 2px solid #ddd;
+        font-weight: 700;
+      }
+    }
+
+    // 管理员样式结构
+    @treeWidth: 320px;
+    .dsf_content_item {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding-left: @treeWidth;
+      // 左侧树形结构
+      .dsf_content_itemL {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: @treeWidth;
+        overflow-y: hidden;
+        height: 100%;
+        padding: 20px 20px 0 20px;
+        border-right: 1px solid #dddddd;
+        // > .nodeTree {
+        //   height: calc(~'100% - 20px');
+        // }
+      }
+      // 右侧内容
+      .dsf_content_itemR {
+        overflow-y: auto;
+        padding: 20px 20px 40px;
+        height: 100%;
+        background: #fff;
+      }
+    }
+
+    // 详情页页头样式
+    .dsf_system_title {
+      color: @color-pointed;
+      text-align: left;
+      padding: 10px 0 20px 0;
+      h1 {
+        font-weight: 700;
+      }
+      &.dsf_system_border {
+        margin-bottom: 20px;
+        border-bottom: 1px solid @border-color;
+      }
+    }
+
+    // 详情页页头和页尾按钮样式
+    .dsf_system_btn {
+      text-align: left;
+      font-size: 0;
+      // 清楚浮动
+      &:after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        clear: both;
+      }
+      button {
+        margin-right: 10px;
+        .icon-angle-double-left {
+          color: #aeaeae;
+          font-size: 12px;
+          margin-right: 5px;
+        }
+      }
+    }
+
+    // 详情页内容样式
+    .dsf_system_section {
+      width: 100%;
+      margin: 10px 0;
+      padding: 30px 0 30px 20px;
+      border-top: 1px solid @bthColor-option;
+      border-bottom: 1px solid @bthColor-option;
+    }
+
+    // systemRole内容样式
+    .dsf_role_section {
+      position: relative;
+      .dsf_label_item {
+        display: block;
+        position: relative;
+        height: 100%;
+      }
+      .dsf_role_item {
+        width: 300px;
+        height: 225px;
+        border: 1px solid #ddd;
+        overflow-y: auto;
+        margin-bottom: 0;
+      }
+      .dsf_label_item {
+        .dsf_label_name {
+          width: 72px;
+        }
+      }
+    }
+
+    // 机构管理
+    .dsf_insManage_section {
+      .dsf_label_item .dsf_label_name {
+        width: 84px;
+      }
+    }
+
+    // 菜单管理
+    .dsf_menu_section {
+      .dsf_label_item .dsf_label_name {
+        width: 82px;
+      }
+    }
+
+    // 参数配置
+    .dsf_params_section {
+      .dsf_label_item .dsf_label_name {
+        width: 60px;
+      }
+    }
+
+    // 操作日志
+    .dsf_group_section {
+      .dsf_label_item .dsf_label_name {
+        width: 90px;
+      }
+    }
+
+    // 上传文件弹窗
+    .dsf_uploadfile_section {
+      .dsf_label_item .dsf_label_name {
+        width: 150px;
+      }
+    }
+
+    // 定时任务日志
+    .dsf_taskLogs_section {
+      .dsf_label_item .dsf_label_name {
+        width: 180px;
+      }
+    }
+  }
+  // 页面需要内填充的情况
+  .dsf_content_section_padding {
+    padding: 20px 20px 40px;
+  }
+}
+
+// 必填样式
+.dsf_require {
+  position: absolute;
+  top: 2px;
+  left: -10px;
+  font-size: 12px;
+  color: #f56c6c;
+}
+
+// 详情页面样式
+.dsf_label_item {
+  margin-bottom: 20px;
+  font-size: 0;
+
+  // 去掉最后一个盒子下面外边距
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  // label文字
+  .dsf_label_name {
+    position: relative;
+    display: inline-block;
+    width: 124px;
+    font-size: 14px;
+    text-align: left;
+    color: #666;
+    vertical-align: middle;
+  }
+
+  // input
+  .dsf_label_input {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    word-wrap: break-word;
+    font-size: 14px;
+    color: #333;
+  }
+
+  // 内容和文字顶部对齐
+  .dsf_label_top {
+    width: 70%;
+    vertical-align: top;
+  }
+
+  // textarea宽度
+  .dsf_label_textarea {
+    width: 300px;
+  }
+
+  // 内容文字段落
+  .dsf_label_desc {
+    margin-bottom: 20px;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  // 角色权限弹出框
+  .tree_box {
+    width: 350px;
+    height: 225px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+  }
+}
+
+// 去除textarea中的icon
+.unClearable {
+  i {
+    display: none;
+  }
+}
+
+// 气泡动画
+.toolTip-slide-up {
+  transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  transform-origin: 50% 0;
+  backface-visibility: hidden;
+}
+.toolTip-slide-up-enter-active,
+.toolTip-slide-up-leave-active {
+  opacity: 1;
+  transform: scaleY(1);
+}
+.toolTip-slide-up-enter,
+.toolTip-slide-up-leave-active {
+  opacity: 0;
+  transform: scaleY(0);
+}
+
+// 气泡下拉框
+.dsf_toolTip {
+  position: absolute;
+  top: 44px;
+  left: 0;
+  width: 320px;
+  height: 162px;
+  border: 1px solid #ddd;
+  box-shadow: 3px 3px 6px #ddd, 0 0 1px #ddd;
+  color: #606266;
+  background-color: #fff;
+  z-index: 888;
+  ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    z-index: 890;
+  }
+  li {
+    cursor: pointer;
+    &:hover {
+      color: #345077;
+      .dsf_toolTip_path {
+        display: block;
+      }
+    }
+  }
+  .dsf_toolTip_name {
+    line-height: 40px;
+    padding-left: 6px;
+    &:hover {
+      background-color: #f5f5f5;
+    }
+  }
+  .dsf_toolTip_path {
+    display: none;
+    line-height: 20px;
+    padding-left: 6px;
+    color: #ccc;
+  }
+  .dsf_toolTip_unresult {
+    line-height: 120px;
+    text-align: center;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    display: block;
+    top: -6px;
+    left: 15px;
+    width: 10px;
+    height: 10px;
+    border: 1px solid #ddd;
+    border-bottom: 0;
+    border-left: 0;
+    transform: rotate(-45deg);
+    background-color: #fff;
+    z-index: 889;
+  }
+}
+
+// 页面初次进来默认加载图片
+.dsf_defualt_image {
+  width: 100%;
+  height: inherit;
+  min-height: inherit;
+  background: url('~@/assets/images/common/index-logo.jpg') no-repeat center
+    center;
+  background-size: 30%;
+}

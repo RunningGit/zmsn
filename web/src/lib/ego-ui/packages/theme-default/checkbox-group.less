@@ -1,0 +1,18 @@
+@import './common/variables';
+
+@checkbox-prefix-cls: ~'@{dy-prefix}-checkbox';
+
+.@{checkbox-prefix-cls}-group {
+  display: inline-block;
+
+  &.@{checkbox-prefix-cls}-disabled {
+    .@{checkbox-prefix-cls} {
+      cursor: not-allowed;
+    }
+
+    .dy-icon,
+    .@{checkbox-prefix-cls}-text {
+      color: @checkbox-disabled-color;
+    }
+  }
+}

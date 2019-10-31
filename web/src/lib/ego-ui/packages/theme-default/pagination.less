@@ -1,0 +1,118 @@
+@import './common/variables';
+
+@pagination-prefix-cls: ~'@{dy-prefix}-pagination';
+
+.@{pagination-prefix-cls} {
+  display: block;
+  font-size: 0;
+  user-select: none;
+  //   white-space: nowrap;
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .dy-input input {
+    text-align: center;
+  }
+
+  &-layout {
+    display: inline-block;
+    height: @pagination-height-base;
+    line-height: @pagination-height-base;
+    vertical-align: middle;
+    font-size: 14px;
+
+    &:not(:first-child) {
+      margin-left: 10px;
+    }
+
+    .dy-icon {
+      font-size: inherit;
+    }
+  }
+
+  &-navigation {
+    ul {
+      display: table;
+      margin: 0;
+      padding: 0;
+
+      li {
+        position: relative;
+        display: table-cell;
+        white-space: nowrap;
+        list-style: none;
+
+        & + li {
+          padding-left: 10px;
+        }
+
+        &.dy-pagination-simplify {
+          display: none;
+        }
+
+        a {
+          display: block;
+          min-width: @pagination-height-base;
+          height: @pagination-height-base;
+          line-height: @pagination-height-base;
+          text-align: center;
+          border: 1px solid #ddd;
+          color: @pagination-color-base;
+          background: #fff;
+          text-decoration: none;
+          transition: all 0.2s ease;
+
+          &.dy-current {
+            color: #fff;
+            border-color: @pagination-color-active;
+            background: @pagination-color-active;
+          }
+
+          &.dy-pagination-disabled {
+            cursor: not-allowed;
+            border-color: @pagination-disabled-bordercolor;
+            color: @pagination-disabled-color;
+            background: @pagination-disabled-bgcolor;
+          }
+
+          &:hover {
+            &:not(.dy-current):not(.dy-pagination-disabled) {
+              color: @pagination-color-active;
+              border-color: @pagination-color-active;
+            }
+          }
+        }
+      }
+    }
+
+    &-prev,
+    &-next {
+      a {
+        padding: 0 10px;
+      }
+    }
+
+    &-more {
+      span {
+        display: inline;
+      }
+      .dy-icon {
+        font-size: 12px;
+        display: none;
+      }
+
+      a:hover {
+        span {
+          display: none;
+        }
+        .dy-icon {
+          display: inline-block;
+        }
+      }
+    }
+  }
+}

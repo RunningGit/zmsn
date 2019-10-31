@@ -1,0 +1,10 @@
+version: "0.1.0"
+pre_ci_boot:
+  image:  registry.cn-shenzhen.aliyuncs.com/do1/u4node
+  tag: 1.0.2
+ci:
+- mkdir -p static
+- cnpm install
+- cnpm run build
+- cp -r docker $ALAUDACI_DEST_DIR/docker
+- cp -r dist $ALAUDACI_DEST_DIR/dist

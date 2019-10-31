@@ -1,0 +1,89 @@
+@import './common/variables';
+
+@modal-prefix-cls: ~'@{dy-prefix}-modal';
+
+.@{modal-prefix-cls} {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+
+  &-wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+
+    &::after {
+      content: '';
+      display: inline-block;
+      height: 100%;
+      width: 0;
+      vertical-align: middle;
+    }
+  }
+
+  &-header {
+    position: relative;
+    min-height: 44px;
+    padding: 0 20px;
+    text-align: left;
+    line-height: 44px;
+    font-size: 14px;
+    color: #fff;
+    background: @primary-color;
+
+    .dy-icon {
+      position: absolute;
+      right: 4px;
+      display: inline-block;
+      padding: 0 16px;
+      font-size: 12px;
+      color: #ddd;
+
+      &:hover {
+        cursor: pointer;
+        color: #eee;
+      }
+    }
+  }
+
+  &-body {
+    // width: 100%;
+    // max-height: calc(100vh - 44px);
+    padding: 20px;
+    font-size: 14px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    background: #fff;
+    // overflow: auto;
+  }
+
+  &-footer {
+    padding: 0 15px;
+    height: 60px;
+    line-height: 60px;
+    text-align: right;
+    background: #f1f1f1;
+  }
+}
+
+.modal-enter-active,
+.modal-leave-active {
+  transition: all 0.5s;
+}
+.modal-enter,
+.modal-leave-to {
+  transform: translateY(-5%);
+  opacity: 0;
+}
+
+.mask-enter-active,
+.mask-leave-active {
+  transition: opacity 0.5s;
+}
+.mask-enter,
+.mask-leave-to {
+  opacity: 0;
+}

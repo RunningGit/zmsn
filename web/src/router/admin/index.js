@@ -1,0 +1,679 @@
+import { applyRouter } from './apply'
+// let data = '-dsf' // 调度服务定时任务(微服务)
+let data = '' // 调度服务定时任务(单体服务)
+/**
+ * 后台管理界面路由
+ */
+var router = [
+  // 首页
+  {
+    path: '/',
+    redirect: '/index',
+    component: resolve => require(['@/views/admin/index'], resolve),
+    children: [
+      {
+        path: 'index',
+        meta: {
+          title: '首页'
+        },
+        name: 'index',
+        component: resolve => require(['@/views/admin/home'], resolve)
+      }
+    ]
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: resolve => require(['@/views/admin/index'], resolve),
+    children: [
+      // 申报管理
+      applyRouter,
+      // 系统管理
+      {
+        path: 'systemMange',
+        meta: {
+          title: '系统管理'
+        },
+        name: 'systemMange',
+        component: resolve => require(['@/views/admin/container'], resolve),
+        children: [
+          // 机构管理
+          {
+            path: 'institutionManage',
+            meta: {
+              title: '机构'
+            },
+            component: resolve =>
+              require([
+                '@/views/admin/systemManage/institutionManage'
+              ], resolve),
+            children: [
+              {
+                path: '/',
+                name: 'institutionManageList',
+                meta: {
+                  title: '机构管理'
+                },
+                component: resolve =>
+                  require([
+                    '@/views/admin/systemManage/institutionManage/institutionManageList'
+                  ], resolve)
+              },
+              {
+                path: 'institutionManageAdd',
+                name: 'institutionManageAdd',
+                meta: {
+                  title: '新增部门'
+                },
+                component: resolve =>
+                  require([
+                    '@/views/admin/systemManage/institutionManage/institutionManageAdd'
+                  ], resolve)
+              }
+            ]
+          },
+          // 管理员
+          {
+            path: 'administrator',
+            meta: {
+              title: '管理员'
+            },
+            component: resolve =>
+              require(['@/views/admin/systemManage/administrator'], resolve),
+            children: [
+              {
+                path: '/',
+                name: 'adminList',
+                meta: {
+                  title: '管理员管理'
+                },
+                component: resolve =>
+                  require([
+                    '@/views/admin/systemManage/administrator/adminList'
+                  ], resolve)
+              },
+              {
+                path: 'adminAdd',
+                name: 'adminAdd',
+                meta: {
+                  title: '新增管理员'
+                },
+                component: resolve =>
+                  require([
+                    '@/views/admin/systemManage/administrator/adminAdd'
+                  ], resolve)
+              },
+              {
+                path: 'adminDetail',
+                name: 'adminDetail',
+                meta: {
+                  title: '管理员详情'
+                },
+                component: resolve =>
+                  require([
+                    '@/views/admin/systemManage/administrator/adminDetail'
+                  ], resolve)
+              }
+            ]
+          },
+          // 菜单管理
+          {
+            path: 'menuManage',
+            meta: {
+              title: '菜单管理'
+            },
+            component: resolve =>
+              require(['@/views/admin/systemManage/menuManage'], resolve),
+            children: [
+              {
+                path: '/',
+                name: 'menuDetail',
+                meta: {
+                  title: '菜单详情'
+                },
+                component: resolve =>
+                  require([
+                    '@/views/admin/systemManage/menuManage/menuDetail'
+                  ], resolve)
+              },
+              {
+                path: 'menuAdd',
+                name: 'menuAdd',
+                meta: {
+                  title: '菜单新增'
+                },
+                component: resolve =>
+                  require([
+                    '@/views/admin/systemManage/menuManage/menuAdd'
+                  ], resolve)
+              }
+            ]
+          },
+          // 管理组
+          {
+            path: 'systemGroup',
+            meta: {
+              title: '管理组'
+            },
+            component: resolve => require(['@/views/admin/container'], resolve),
+            children: [
+              {
+                path: '/',
+                name: 'systemGroupList',
+                meta: {
+                  title: '管理管理组列表组'
+                },
+                component: resolve =>
+                  require(['@/views/admin/systemManage/systemGroup'], resolve)
+              },
+              {
+                path: 'systemGroupDetail',
+                name: 'systemGroupDetail',
+                meta: {
+                  title: '管理组详情'
+                },
+                component: resolve =>
+                  require([
+                    '@/views/admin/systemManage/systemGroup/systemGroupDetail'
+                  ], resolve)
+              },
+              {
+                path: 'addSystemGroup',
+                name: 'addSystemGroup',
+                meta: {
+                  title: '新增管理组'
+                },
+                component: resolve =>
+                  require([
+                    '@/views/admin/systemManage/systemGroup/addSystemGroup'
+                  ], resolve)
+              },
+              {
+                path: 'member',
+                name: 'member',
+                meta: {
+                  title: '成员管理'
+                },
+                component: resolve =>
+                  require([
+                    '@/views/admin/systemManage/systemGroup/member'
+                  ], resolve)
+              }
+            ]
+          },
+          // 角色管理
+          {
+            path: 'systemRole',
+            meta: {
+              title: '角色管理'
+            },
+            component: resolve =>
+              require(['@/views/admin/systemManage/systemRole'], resolve),
+            children: [
+              {
+                path: '/',
+                name: 'userAuthorization',
+                meta: {
+                  title: '用户授权'
+                },
+                component: resolve =>
+                  require([
+                    '@/views/admin/systemManage/systemRole/userAuthorization'
+                  ], resolve)
+              },
+              {
+                path: 'roleDetail',
+                name: 'roleDetail',
+                meta: {
+                  title: '角色管理详情'
+                },
+                component: resolve =>
+                  require([
+                    '@/views/admin/systemManage/systemRole/roleDetail'
+                  ], resolve)
+              },
+              {
+                path: 'addRole',
+                name: 'addRole',
+                meta: {
+                  title: '新增角色管理'
+                },
+                component: resolve =>
+                  require([
+                    '@/views/admin/systemManage/systemRole/addRole'
+                  ], resolve)
+              }
+            ]
+          },
+          // 消息日志
+          {
+            path: 'messageLog',
+            meta: {
+              title: '消息日志'
+            },
+            component: resolve => require(['@/views/admin/container'], resolve),
+            children: [
+              {
+                path: '/',
+                name: 'messageLog',
+                meta: {
+                  title: '消息日志'
+                },
+                component: resolve =>
+                  require(['@/views/admin/systemManage/messageLog'], resolve)
+              },
+              {
+                path: 'messageLogDetail',
+                name: 'messageLogDetail',
+                meta: {
+                  title: '消息日志详情'
+                },
+                component: resolve =>
+                  require([
+                    '@/views/admin/systemManage/messageLog/messageLogDetail'
+                  ], resolve)
+              }
+            ]
+          },
+          // 定时任务(微服务)
+          {
+            path: 'timingTask',
+            meta: {
+              title: '定时任务'
+            },
+            component: resolve => require(['@/views/admin/container'], resolve),
+            children: [
+              {
+                path: '/',
+                name: 'timingTaskList',
+                meta: {
+                  title: '定时任务列表'
+                },
+                component: resolve =>
+                  require([
+                    `@/views/admin/systemManage/timingTask${data}`
+                  ], resolve)
+              },
+              {
+                path: 'timingTaskDetail',
+                name: 'timingTaskDetail',
+                meta: {
+                  title: '定时任务详情'
+                },
+                component: resolve =>
+                  require([
+                    `@/views/admin/systemManage/timingTask${data}/timingTaskDetail`
+                  ], resolve)
+              },
+              {
+                path: 'timingTaskAdd',
+                name: 'timingTaskAdd',
+                meta: {
+                  title: '新增定时任务'
+                },
+                component: resolve =>
+                  require([
+                    `@/views/admin/systemManage/timingTask${data}/addTask`
+                  ], resolve)
+              }
+            ]
+          },
+          // 定时任务日志
+          {
+            path: 'taskLogs',
+            meta: {
+              title: '定时任务日志'
+            },
+            component: resolve => require(['@/views/admin/container'], resolve),
+            children: [
+              {
+                path: '/',
+                name: 'taskLogsList',
+                meta: {
+                  title: '定时任务列表'
+                },
+                component: resolve =>
+                  require(['@/views/admin/systemManage/taskLogs'], resolve)
+              },
+              {
+                path: 'taskLogsDetail',
+                name: 'taskLogsDetail',
+                meta: {
+                  title: '定时任务详情'
+                },
+                component: resolve =>
+                  require([
+                    '@/views/admin/systemManage/taskLogs/taskLogsDetail'
+                  ], resolve)
+              }
+            ]
+          },
+          // SQL监控
+          {
+            path: 'sqlMonitor',
+            meta: {
+              title: 'SQL监控'
+            },
+            component: resolve => require(['@/views/admin/container'], resolve),
+            children: [
+              {
+                path: '/',
+                name: 'sqlMonitor',
+                meta: {
+                  title: 'SQL监控'
+                },
+                component: resolve =>
+                  require(['@/views/admin/systemManage/sqlMonitor'], resolve)
+              }
+            ]
+          },
+          // 参数管理
+          {
+            path: 'paramManage',
+            meta: {
+              title: '参数管理'
+            },
+            component: resolve => require(['@/views/admin/container'], resolve),
+            children: [
+              {
+                path: '/',
+                name: 'paramManage',
+                meta: {
+                  title: '参数管理'
+                },
+                component: resolve =>
+                  require(['@/views/admin/systemManage/paramManage'], resolve)
+              }
+            ]
+          },
+          // 支付记录
+          {
+            path: 'payRecord',
+            meta: {
+              title: '支付记录'
+            },
+            component: resolve => require(['@/views/admin/container'], resolve),
+            children: [
+              {
+                path: '/',
+                name: 'payRecord',
+                meta: {
+                  title: '支付记录'
+                },
+                component: resolve =>
+                  require(['@/views/admin/systemManage/payRecord'], resolve)
+              }
+            ]
+          },
+          // 登录日志
+          {
+            path: 'loginLogs',
+            meta: {
+              title: '登录日志'
+            },
+            component: resolve => require(['@/views/admin/container'], resolve),
+            children: [
+              {
+                path: '/',
+                name: 'loginLogs',
+                meta: {
+                  title: '登录日志'
+                },
+                component: resolve =>
+                  require(['@/views/admin/systemManage/loginLogs'], resolve)
+              }
+            ]
+          },
+          // 操作日志
+          {
+            path: 'operateLogs',
+            meta: {
+              title: '操作日志'
+            },
+            component: resolve => require(['@/views/admin/container'], resolve),
+            children: [
+              {
+                path: '/',
+                name: 'operateLogs',
+                meta: {
+                  title: '操作日志'
+                },
+                component: resolve =>
+                  require(['@/views/admin/systemManage/operateLogs'], resolve)
+              },
+              {
+                path: 'operateLogsDetail',
+                name: 'operateLogsDetail',
+                meta: {
+                  title: '操作日志详情'
+                },
+                component: resolve =>
+                  require([
+                    '@/views/admin/systemManage/operateLogs/operateLogsDetail'
+                  ], resolve)
+              }
+            ]
+          },
+          // 字典管理
+          {
+            path: 'dictionaryManage',
+            meta: {
+              title: '字典管理'
+            },
+            component: resolve =>
+              require(['@/views/admin/systemManage/dictionaryManage'], resolve),
+            children: [
+              {
+                path: '/',
+                name: 'dictionaryManage',
+                meta: {
+                  title: '字典管理'
+                },
+                component: resolve =>
+                  require([
+                    '@/views/admin/systemManage/dictionaryManage/dictionaryManageList'
+                  ], resolve)
+              },
+              {
+                path: 'dictionaryManageAdd',
+                name: 'dictionaryManageAdd',
+                meta: {
+                  title: '字典管理新增'
+                },
+                component: resolve =>
+                  require([
+                    '@/views/admin/systemManage/dictionaryManage/dictionaryManageAdd'
+                  ], resolve)
+              }
+            ]
+          },
+          // 参数配置
+          {
+            path: 'paramsConfig',
+            meta: {
+              title: '参数配置'
+            },
+            component: resolve => require(['@/views/admin/container'], resolve),
+            children: [
+              {
+                path: '/',
+                name: 'paramsConfig',
+                meta: {
+                  title: '参数配置'
+                },
+                component: resolve =>
+                  require(['@/views/admin/systemManage/paramsConfig'], resolve)
+              },
+              {
+                path: 'paramsConfigAdd',
+                name: 'paramsConfigAdd',
+                meta: {
+                  title: '参数配置新增'
+                },
+                component: resolve =>
+                  require([
+                    '@/views/admin/systemManage/paramsConfig/paramsConfigAdd'
+                  ], resolve)
+              },
+              {
+                path: 'paramsConfigDetail',
+                name: 'paramsConfigDetail',
+                meta: {
+                  title: '参数配置查看编辑'
+                },
+                component: resolve =>
+                  require([
+                    '@/views/admin/systemManage/paramsConfig/paramsConfigDetail'
+                  ], resolve)
+              }
+            ]
+          },
+          // 上传文件
+          {
+            path: 'uploadFile',
+            meta: {
+              title: '上传文件'
+            },
+            component: resolve => require(['@/views/admin/container'], resolve),
+            children: [
+              {
+                path: '/',
+                name: 'uploadFile',
+                meta: {
+                  title: '上传文件',
+                  keepAlive: true
+                },
+                component: resolve =>
+                  require(['@/views/admin/systemManage/uploadFile'], resolve)
+              }
+            ]
+          },
+          // 服务监控
+          {
+            path: 'serviceMonitor',
+            meta: {
+              title: '服务监控'
+            },
+            component: resolve => require(['@/views/admin/container'], resolve),
+            children: [
+              {
+                path: '/',
+                name: 'serviceMonitor',
+                meta: {
+                  title: '服务监控'
+                },
+                component: resolve =>
+                  require([
+                    '@/views/admin/systemManage/serviceMonitor'
+                  ], resolve)
+              }
+            ]
+          },
+          // api网关
+          {
+            path: 'apiGateway',
+            meta: {
+              title: 'api网关'
+            },
+            component: resolve => require(['@/views/admin/container'], resolve),
+            children: [
+              {
+                path: '/',
+                name: 'apiGateway',
+                meta: {
+                  title: 'api网关'
+                },
+                component: resolve =>
+                  require(['@/views/admin/systemManage/apiGateway'], resolve)
+              }
+            ]
+          },
+          // 链路追踪
+          {
+            path: 'linkTrace',
+            meta: {
+              title: '链路追踪'
+            },
+            component: resolve => require(['@/views/admin/container'], resolve),
+            children: [
+              {
+                path: '/',
+                name: 'linkTrace',
+                meta: {
+                  title: '链路追踪'
+                },
+                component: resolve =>
+                  require(['@/views/admin/systemManage/linkTrace'], resolve)
+              }
+            ]
+          },
+          {
+            path: 'monitorMessage',
+            meta: '管理',
+            component: resolve => require(['@/views/admin/container'], resolve),
+            children: [
+              {
+                path: '/',
+                name: 'monitorMessage',
+                meta: '列表',
+                component: resolve =>
+                  require(['@/views/admin/systemManage/monitormessage'], resolve)
+              }
+            ]
+          },
+          // 消息服务日志
+          {
+            path: 'smslog',
+            meta: '管理',
+            component: resolve => require(['@/views/admin/container'], resolve),
+            children: [
+              {
+                path: '/',
+                name: 'smslog',
+                meta: '列表',
+                component: resolve =>
+                  require(['@/views/admin/systemManage/smslog'], resolve)
+              }
+            ]
+          },
+          // 在线用户统计
+          {
+            path: 'dsfOnlineUser',
+            meta: '管理',
+            component: resolve => require(['@/views/admin/container'], resolve),
+            children: [
+              {
+                path: '/',
+                name: 'dsfOnlineUser',
+                meta: '列表',
+                component: resolve =>
+                  require(['@/views/admin/systemManage/dsfOnlineUser'], resolve)
+              }
+            ]
+          },
+          // 请在此处添加新路由
+          {
+            path: 'testbb',
+            meta: {
+              title: '测试专用'
+            },
+            component: resolve => require(['@/views/admin/container'], resolve),
+            children: [
+              {
+                path: '/',
+                name: 'testbb',
+                meta: {
+                  title: '测试专用',
+                  keepAlive: true
+                },
+                component: resolve =>
+                  require(['@/views/admin/systemManage/testbb'], resolve)
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
+export default router

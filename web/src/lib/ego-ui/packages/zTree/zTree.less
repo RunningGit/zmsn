@@ -1,0 +1,71 @@
+.ztree {
+  position: relative;
+  .tree-list {
+    overflow: hidden;
+    max-height: 0; // transition: ease 0.3s;
+    // -moz-transition: ease 0.3s;
+    // -webkit-transition: ease 0.3s;
+    // -o-transition: ease 0.3s;
+    &.tree-show {
+      max-height: 1000px;
+    }
+  }
+}
+
+.ztree-fold {
+  padding-left: 15px;
+}
+
+.ztree-node {
+  cursor: pointer;
+}
+
+.ztree-root {
+  padding-left: 0;
+}
+
+.gu-mirror {
+  .tree-list,
+  .tree-bth,
+  .dy-menuExt {
+    display: none;
+  }
+}
+
+.ztree-node_inner {
+  position: relative;
+  display: block;
+  color: #666666;
+  padding-left: 41px;
+  line-height: 26px;
+  white-space: nowrap;
+  background: url(./images/icon_folder.png) no-repeat 16px center;
+  &:hover {
+    background-color: #f5f7fa;
+  }
+  .ztree-leaf:before {
+    font-family: element-icons !important;
+    content: '\E60E';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #c0c4cc; // transition: 0.3s;
+    // -moz-transition: 0.3s;
+    // -webkit-transition: 0.3s;
+    // -o-transition: 0.3s;
+  }
+  .ztree-node-active > & {
+    // color: #4f7fe1;
+  } //展开状态
+}
+
+.ztree-node-expand {
+  & > .ztree-node_inner {
+    .ztree-leaf:before {
+      transform: rotate(90deg);
+      -moz-transform: rotate(90deg);
+      -webkit-transform: rotate(90deg);
+      -o-transform: rotate(90deg);
+    }
+  }
+}

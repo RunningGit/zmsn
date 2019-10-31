@@ -1,0 +1,86 @@
+// ************ 重构 by xiaofeng ************ //
+
+// ************ 公共布局 **************//
+
+// header
+@header-height: 60px;
+@header-bgimg: url('~@/assets/images/common/top_bg.png');
+@header-font-color: #fff;
+// 左侧菜单
+@btnColor-operation: #0a1c31; // 操作按钮颜色
+
+// ************ 公共布局 end **************//
+
+// ************ 基础变量 **************//
+@color-pointed: #2c5081;
+@color-default: #fff;
+@base-bgColor: #f5f5f5;
+
+// 表格操作颜色系列
+@warning: #e2940d;
+@dy_color01: #6ec884;
+@dy_color02: #e2940d;
+@dy_color03: #9159dd;
+@dy_color05: #f572c2;
+@dy_color04: #85cfe2;
+
+// boder
+@bthColor-option: #ddd;
+@border-color: #ddd;
+@border_primary: 1px solid #dddddd;
+@primary-color: #3eb9f6;
+@border_theme: 1px solid @primary-color;
+@bgcolor-container: #ffffff;
+
+// 基础字号
+@font12: 12px;
+@font13: 13px;
+@font14: 14px;
+@font15: 15px;
+@font16: 16px;
+@font17: 17px;
+@font18: 18px;
+@font22: 22px;
+@font30: 30px;
+
+// 基础字体颜色
+@font-color-default: #333;
+@font-color-primary: #666;
+@font-color-light: #999;
+@placeholder-color: #999999;
+
+// ************ 基础变量 end ************ //
+
+// ************ 主题切换 ************ //
+.transform (@args) {
+  -webkit-transform: @args;
+  -moz-transform: @args;
+  -ms-transform: @args;
+  -o-transform: @args;
+  transform: @args;
+}
+
+.transition (@args) {
+  -webkit-transition: @args;
+  -moz-transition: @args;
+  -ms-transition: @args;
+  -o-transition: @args;
+  transition: @args;
+}
+.theme-default {
+  .theme(#183e64);
+}
+.theme-blue {
+  .theme(#183e64);
+}
+.theme-green {
+  .theme(#6ec884);
+}
+.theme-red {
+  .theme(#ec5343);
+}
+.theme(@color: #2c5081) {
+  @primary: @color;
+}
+
+// ************ 主题切换 end ************ //

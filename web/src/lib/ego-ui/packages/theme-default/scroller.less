@@ -1,0 +1,64 @@
+@import './common/variables';
+
+@scroller-prefix-cls: ~'@{dy-prefix}-scroller';
+
+.@{scroller-prefix-cls} {
+  &-area {
+    position: relative;
+    height: inherit;
+    overflow: hidden;
+
+    &:hover,
+    &.dy-dragging {
+      user-select: none;
+
+      .@{scroller-prefix-cls} {
+        &-bar,
+        &-thumb {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &-bar {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 99999;
+    border-radius: 2px;
+    background: rgba(0, 0, 0, 0.1);
+    transition: all 0.2s;
+    opacity: 0;
+
+    &-x {
+      left: 0;
+      height: 5px;
+    }
+    &-y {
+      top: 0;
+      width: 5px;
+    }
+  }
+  &-thumb {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    margin: 0;
+    padding: 0;
+    border-radius: inherit;
+    background: @primary-color;
+    transition: all 0.2s;
+    opacity: 0;
+  }
+
+  &-content {
+    position: relative;
+    height: 100%;
+    transition: all 0.2s;
+  }
+
+  &-supporter {
+    float: left;
+  }
+}

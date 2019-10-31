@@ -1,0 +1,161 @@
+/**
+ * 基础框架头部和左侧菜单样式设置
+ */
+// 页面头部
+.dsf_header {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: @header-height;
+  color: @color-default;
+  background-image: @header-bgimg;
+  z-index: 9;
+  a {
+    color: @header-font-color;
+  }
+  .dsf_header_logo {
+    font-size: 0;
+    width: 260px;
+    height: 60px;
+    padding-top: 15px;
+    margin-left: 20px;
+    img {
+      width: 100%;
+    }
+  }
+  .dsf_header_navbar {
+    .dsf_header_navbar_down {
+      margin-right: 20px;
+      color: #fff;
+      font-size: 16px;
+      letter-spacing: 1px;
+      .icon-user-o {
+        display: inline-block;
+        height: 60px;
+        line-height: 60px;
+        margin-right: 6px;
+        font-size: 18px;
+      }
+      .el-icon-arrow-down {
+        margin-right: 7px;
+        margin-left: 6px;
+      }
+    }
+  }
+}
+
+// 页面主体
+.dsf_main {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin-top: 60px;
+  // 侧边栏样式
+  .dsf_aside {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 200px;
+    overflow-x: hidden;
+    background-color: @base-bgColor;
+    border-right: 1px solid @border-color;
+    // box-shadow: 5px 13px 12px #ddd;
+    z-index: 90;
+    // 滚动条样式
+    &::-webkit-scrollbar-thumb {
+      border: 0;
+    }
+    &::-webkit-scrollbar {
+      width: 0px;
+    }
+    .dsf_aside_operationBtn {
+      height: 40px;
+      line-height: 40px;
+      color: @color-default;
+      text-align: center;
+      background-color: @btnColor-operation;
+      cursor: pointer;
+      .icon-angle-double-left {
+        font-size: 14px;
+      }
+    }
+  }
+
+  // 左侧收起时样式
+  .dsf_aside_min {
+    position: fixed;
+    width: 20px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 12px;
+    color: @color-default;
+    background-color: @btnColor-operation;
+    z-index: 111;
+  }
+
+  // 导航标签tab样式
+  .dsf_tabs {
+    position: relative;
+    min-width: 1300px;
+    padding-left: 200px;
+    height: 100%;
+  }
+}
+
+// 主体公共样式
+.dsf_main_min {
+  .dsf_tabs {
+    padding-left: 0;
+  }
+  .el-tabs__header {
+    padding-left: 40px !important;
+  }
+}
+
+.dsf_tabs,
+.dsf_aside,
+.dsf_content {
+  transition: padding-left 0.3s;
+}
+
+// 弹出框样式
+.dsf_home_dialog {
+  .dsf_label_name {
+    text-align: right;
+  }
+}
+
+/* 左侧菜单收缩动画 */
+.slide-fade-enter-active {
+  animation: fade-in 0.3s;
+}
+.slide-fade-leave-active {
+  animation: fade-out 0.3s;
+}
+
+@keyframes fade-in {
+  0% {
+    transform: translate3d(-200px, 0px, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(-200px, 0, 0);
+    opacity: 1;
+  }
+}

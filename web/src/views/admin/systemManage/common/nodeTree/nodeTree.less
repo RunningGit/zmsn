@@ -1,0 +1,67 @@
+// 搜索框
+.tree_search {
+  position: relative;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+// 搜索框旁边的新增按钮
+.tree_search_addcontent {
+  // 新增按钮
+  .tree_search_add {
+    position: relative;
+    line-height: 32px;
+    color: #345077;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  .tree_btn_txt {
+    display: block;
+    width: 100%;
+    color: #333;
+    line-height: 1;
+    &:hover {
+      color: #345077;
+    }
+  }
+  .tree_btn_txt + .tree_btn_txt {
+    margin-top: 15px;
+  }
+}
+
+// 搜索列表
+.nodeTree {
+  position: relative;
+  height: 100%;
+  // height: calc(~'100% - 20px');
+}
+
+// 气泡框
+.tree_btn {
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  width: 70px;
+  padding: 15px 0;
+  margin-left: -35px;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  box-shadow: 2px 2px 8px rgba(221, 221, 221, 0.75);
+  font-size: 12px;
+  text-align: center;
+  background-color: #fff;
+  z-index: 888;
+  &:after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    border-left: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background: #fff;
+    transform: translateX(-50%);
+    transform: rotate(135deg);
+  }
+}

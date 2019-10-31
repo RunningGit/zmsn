@@ -1,0 +1,108 @@
+@import './common/variables';
+
+@select-prefix-cls: ~'@{dy-prefix}-select';
+
+.@{select-prefix-cls} {
+  position: relative;
+  display: inline-block;
+  user-select: none;
+
+  ul,
+  li {
+    list-style: none;
+  }
+
+  input {
+    cursor: pointer;
+  }
+
+  &-input {
+    // 覆盖Input组件默认样式
+    .dy-icon-fix.dy-input-suffix-icon {
+      transition: transform 0.2s ease-out;
+      transform: rotate(0);
+
+      &:after {
+        width: 0;
+        background: transparent;
+      }
+
+      .dy-icon {
+        font-size: 12px;
+        color: lighten(@input-color-base, 40%);
+      }
+    }
+  }
+
+  &-visible {
+    &.@{select-prefix-cls} {
+      .@{select-prefix-cls}-input {
+        .dy-icon-fix.dy-input-suffix-icon {
+          transition: transform 0.2s ease-in;
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+
+  &-tags {
+    position: absolute;
+    left: 0;
+    right: 32px;
+    z-index: 10;
+    height: 32px;
+    line-height: 16px;
+    white-space: nowrap;
+    // overflow: auto;
+
+    & + .dy-select-input input {
+      background: transparent;
+    }
+  }
+
+  &-tag {
+    display: inline-block;
+    margin-top: 6px;
+    margin-left: 3px;
+    padding: 0 5px;
+    vertical-align: top;
+    border: 1px solid #eee;
+    font-size: 12px;
+    color: #666;
+    background: #f0f2f5;
+
+    .dy-icon {
+      cursor: pointer;
+      font-size: 12px;
+      color: #c0c4cc;
+
+      &:hover {
+        color: #999;
+      }
+    }
+  }
+
+  &-list {
+    position: absolute;
+    z-index: 10000;
+    left: 0;
+    transition: top 0.2s;
+
+    ul {
+      position: relative;
+      max-height: 160px;
+      margin: 0;
+      padding: 8px 0;
+      border-radius: @select-border-radius;
+      border: 1px solid #ddd;
+      background: @select-list-bgcolor;
+      box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+      overflow: auto;
+      list-style: none;
+    }
+
+    &-filter {
+      padding: 0 12px;
+    }
+  }
+}
