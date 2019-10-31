@@ -8,14 +8,14 @@
             活动名称
             <span class="red_dot">*</span>
           </div>
-          <dy-input style="width: 60%" placeholder="请输入内容" v-model="value1" />
+          <dy-input style="width: 60%" placeholder="请输入内容" v-model="activity.processName" />
         </div>
         <div class="input_box">
           <div class="input_box_left">
             活动说明
             <span class="red_dot">*</span>
           </div>
-          <dy-input style="width: 80%" placeholder="请输入内容" type="textarea" v-model="value1" />
+          <dy-input style="width: 80%" placeholder="请输入内容" type="textarea" v-model="activity.processDetail" />
         </div>
         <div class="activity_title">活动流程设置</div>
       </div>
@@ -23,10 +23,7 @@
       <div class="dsf_content_section">
         <div class="dsf_content_item">
           <div class="dsf_content_itemL" :class="$style.left_tab_container">
-            <div
-              :class="[$style.left_tab_box, applyIndex === 0 ? $style.active : '']"
-              @click="applyIndex = 0"
-            >提交申报</div>
+            <div :class="[$style.left_tab_box, applyIndex === 0 ? $style.active : '']">提交申报</div>
             <div
               :class="[$style.left_tab_box, applyIndex === 1 ? $style.active : '']"
               @click="applyIndex = 1"
@@ -43,247 +40,14 @@
               :class="[$style.left_tab_box, applyIndex === 4 ? $style.active : '']"
               @click="applyIndex = 4"
             >团省委推荐</div>
-            <div
-              :class="[$style.left_tab_box, applyIndex === 5 ? $style.active : '']"
-              @click="applyIndex = 5"
-            >流程结束</div>
+            <div :class="[$style.left_tab_box, applyIndex === 5 ? $style.active : '']">流程结束</div>
           </div>
           <div class="dsf_content_itemR">
-            <div v-show="applyIndex === 0">
-              <div :class="$style.step_title">步骤: 1</div>
-              <div :class="$style.content_item">
-                <div :class="$style.content_itemLD">节点名称</div>
-                <div :class="$style.content_itemR">
-                  <dy-input placeholder="请输入内容" v-model="value1" />
-                </div>
-              </div>
-              <div :class="$style.content_item">
-                <div :class="$style.content_itemLD">处理人</div>
-                <div :class="$style.content_itemR">
-                  <dy-radio v-model="gender" data="man">学校</dy-radio>
-                </div>
-              </div>
-              <div :class="$style.content_item">
-                <div :class="$style.content_itemLD">操作</div>
-                <div :class="$style.content_itemR">
-                  <div :class="$style.content_itemR_box">
-                    <dy-checkbox v-model="remember">审批</dy-checkbox>&nbsp;&nbsp;|&nbsp;&nbsp;
-                    <dy-input placeholder="推荐" v-model="value1" :class="$style.input_options" />
-                  </div>
-                  <div :class="$style.content_itemR_box">
-                    <dy-checkbox v-model="remember">审批</dy-checkbox>&nbsp;&nbsp;|&nbsp;&nbsp;
-                    <dy-input placeholder="撤回推荐" v-model="value1" :class="$style.input_options" />
-                  </div>
-                  <div :class="$style.content_itemR_box">
-                    <dy-checkbox v-model="remember">下个节点退审后可再次提交审批</dy-checkbox>&nbsp;&nbsp;|&nbsp;&nbsp;
-                    <dy-input placeholder="重新推荐" v-model="value1" :class="$style.input_options" />
-                  </div>
-                  <div :class="$style.content_itemR_box">
-                    <dy-checkbox v-model="remember">关闭流程</dy-checkbox>
-                  </div>
-                </div>
-              </div>
-              <div :class="$style.content_item">
-                <div :class="$style.content_itemL">节点设置</div>
-                <div :class="$style.content_itemR">
-                  <div :class="$style.content_itemR_box">
-                    <dy-checkbox v-model="remember">当前节点启用审批意见</dy-checkbox>
-                  </div>
-                  <div :class="$style.content_itemR_box">设置默认意见</div>
-                  <div :class="$style.content_itemR_box">
-                    <dy-input placeholder="同意" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div v-show="applyIndex === 1">
-              <div :class="$style.step_title">步骤: 2</div>
-              <div :class="$style.content_item">
-                <div :class="$style.content_itemLD">节点名称</div>
-                <div :class="$style.content_itemR">
-                  <dy-input placeholder="请输入内容" v-model="value1" />
-                </div>
-              </div>
-              <div :class="$style.content_item">
-                <div :class="$style.content_itemLD">处理人</div>
-                <div :class="$style.content_itemR">
-                  <dy-radio v-model="gender" data="man">学校</dy-radio>
-                </div>
-              </div>
-              <div :class="$style.content_item">
-                <div :class="$style.content_itemLD">操作</div>
-                <div :class="$style.content_itemR">
-                  <div :class="$style.content_itemR_box">
-                    <dy-checkbox v-model="remember">审批</dy-checkbox>&nbsp;&nbsp;|&nbsp;&nbsp;
-                    <dy-input placeholder="推荐" v-model="value1" :class="$style.input_options" />
-                  </div>
-                  <div :class="$style.content_itemR_box">
-                    <dy-checkbox v-model="remember">审批</dy-checkbox>&nbsp;&nbsp;|&nbsp;&nbsp;
-                    <dy-input placeholder="撤回推荐" v-model="value1" :class="$style.input_options" />
-                  </div>
-                  <div :class="$style.content_itemR_box">
-                    <dy-checkbox v-model="remember">下个节点退审后可再次提交审批</dy-checkbox>&nbsp;&nbsp;|&nbsp;&nbsp;
-                    <dy-input placeholder="重新推荐" v-model="value1" :class="$style.input_options" />
-                  </div>
-                  <div :class="$style.content_itemR_box">
-                    <dy-checkbox v-model="remember">关闭流程</dy-checkbox>
-                  </div>
-                </div>
-              </div>
-              <div :class="$style.content_item">
-                <div :class="$style.content_itemL">节点设置</div>
-                <div :class="$style.content_itemR">
-                  <div :class="$style.content_itemR_box">
-                    <dy-checkbox v-model="remember">当前节点启用审批意见</dy-checkbox>
-                  </div>
-                  <div :class="$style.content_itemR_box">设置默认意见</div>
-                  <div :class="$style.content_itemR_box">
-                    <dy-input placeholder="同意" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div v-show="applyIndex === 2">
-              <div :class="$style.step_title">步骤: 3</div>
-              <div :class="$style.content_item">
-                <div :class="$style.content_itemLD">节点名称</div>
-                <div :class="$style.content_itemR">
-                  <dy-input placeholder="请输入内容" v-model="value1" />
-                </div>
-              </div>
-              <div :class="$style.content_item">
-                <div :class="$style.content_itemLD">处理人</div>
-                <div :class="$style.content_itemR">
-                  <dy-radio v-model="gender" data="man">学校</dy-radio>
-                </div>
-              </div>
-              <div :class="$style.content_item">
-                <div :class="$style.content_itemLD">操作</div>
-                <div :class="$style.content_itemR">
-                  <div :class="$style.content_itemR_box">
-                    <dy-checkbox v-model="remember">审批</dy-checkbox>&nbsp;&nbsp;|&nbsp;&nbsp;
-                    <dy-input placeholder="推荐" v-model="value1" :class="$style.input_options" />
-                  </div>
-                  <div :class="$style.content_itemR_box">
-                    <dy-checkbox v-model="remember">审批</dy-checkbox>&nbsp;&nbsp;|&nbsp;&nbsp;
-                    <dy-input placeholder="撤回推荐" v-model="value1" :class="$style.input_options" />
-                  </div>
-                  <div :class="$style.content_itemR_box">
-                    <dy-checkbox v-model="remember">下个节点退审后可再次提交审批</dy-checkbox>&nbsp;&nbsp;|&nbsp;&nbsp;
-                    <dy-input placeholder="重新推荐" v-model="value1" :class="$style.input_options" />
-                  </div>
-                  <div :class="$style.content_itemR_box">
-                    <dy-checkbox v-model="remember">关闭流程</dy-checkbox>
-                  </div>
-                </div>
-              </div>
-              <div :class="$style.content_item">
-                <div :class="$style.content_itemL">节点设置</div>
-                <div :class="$style.content_itemR">
-                  <div :class="$style.content_itemR_box">
-                    <dy-checkbox v-model="remember">当前节点启用审批意见</dy-checkbox>
-                  </div>
-                  <div :class="$style.content_itemR_box">设置默认意见</div>
-                  <div :class="$style.content_itemR_box">
-                    <dy-input placeholder="同意" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div v-show="applyIndex === 3">
-              <div :class="$style.step_title">步骤: 4</div>
-              <div :class="$style.content_item">
-                <div :class="$style.content_itemLD">节点名称</div>
-                <div :class="$style.content_itemR">
-                  <dy-input placeholder="请输入内容" v-model="value1" />
-                </div>
-              </div>
-              <div :class="$style.content_item">
-                <div :class="$style.content_itemLD">处理人</div>
-                <div :class="$style.content_itemR">
-                  <dy-radio v-model="gender" data="man">学校</dy-radio>
-                </div>
-              </div>
-              <div :class="$style.content_item">
-                <div :class="$style.content_itemLD">操作</div>
-                <div :class="$style.content_itemR">
-                  <div :class="$style.content_itemR_box">
-                    <dy-checkbox v-model="remember">审批</dy-checkbox>&nbsp;&nbsp;|&nbsp;&nbsp;
-                    <dy-input placeholder="推荐" v-model="value1" :class="$style.input_options" />
-                  </div>
-                  <div :class="$style.content_itemR_box">
-                    <dy-checkbox v-model="remember">审批</dy-checkbox>&nbsp;&nbsp;|&nbsp;&nbsp;
-                    <dy-input placeholder="撤回推荐" v-model="value1" :class="$style.input_options" />
-                  </div>
-                  <div :class="$style.content_itemR_box">
-                    <dy-checkbox v-model="remember">下个节点退审后可再次提交审批</dy-checkbox>&nbsp;&nbsp;|&nbsp;&nbsp;
-                    <dy-input placeholder="重新推荐" v-model="value1" :class="$style.input_options" />
-                  </div>
-                  <div :class="$style.content_itemR_box">
-                    <dy-checkbox v-model="remember">关闭流程</dy-checkbox>
-                  </div>
-                </div>
-              </div>
-              <div :class="$style.content_item">
-                <div :class="$style.content_itemL">节点设置</div>
-                <div :class="$style.content_itemR">
-                  <div :class="$style.content_itemR_box">
-                    <dy-checkbox v-model="remember">当前节点启用审批意见</dy-checkbox>
-                  </div>
-                  <div :class="$style.content_itemR_box">设置默认意见</div>
-                  <div :class="$style.content_itemR_box">
-                    <dy-input placeholder="同意" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div v-show="applyIndex === 4">
-              <div :class="$style.step_title">步骤: 5</div>
-              <div :class="$style.content_item">
-                <div :class="$style.content_itemLD">节点名称</div>
-                <div :class="$style.content_itemR">
-                  <dy-input placeholder="请输入内容" v-model="value1" />
-                </div>
-              </div>
-              <div :class="$style.content_item">
-                <div :class="$style.content_itemLD">处理人</div>
-                <div :class="$style.content_itemR">
-                  <dy-radio v-model="gender" data="man">学校</dy-radio>
-                </div>
-              </div>
-              <div :class="$style.content_item">
-                <div :class="$style.content_itemLD">操作</div>
-                <div :class="$style.content_itemR">
-                  <div :class="$style.content_itemR_box">
-                    <dy-checkbox v-model="remember">审批</dy-checkbox>&nbsp;&nbsp;|&nbsp;&nbsp;
-                    <dy-input placeholder="推荐" v-model="value1" :class="$style.input_options" />
-                  </div>
-                  <div :class="$style.content_itemR_box">
-                    <dy-checkbox v-model="remember">审批</dy-checkbox>&nbsp;&nbsp;|&nbsp;&nbsp;
-                    <dy-input placeholder="撤回推荐" v-model="value1" :class="$style.input_options" />
-                  </div>
-                  <div :class="$style.content_itemR_box">
-                    <dy-checkbox v-model="remember">下个节点退审后可再次提交审批</dy-checkbox>&nbsp;&nbsp;|&nbsp;&nbsp;
-                    <dy-input placeholder="重新推荐" v-model="value1" :class="$style.input_options" />
-                  </div>
-                  <div :class="$style.content_itemR_box">
-                    <dy-checkbox v-model="remember">关闭流程</dy-checkbox>
-                  </div>
-                </div>
-              </div>
-              <div :class="$style.content_item">
-                <div :class="$style.content_itemL">节点设置</div>
-                <div :class="$style.content_itemR">
-                  <div :class="$style.content_itemR_box">
-                    <dy-checkbox v-model="remember">当前节点启用审批意见</dy-checkbox>
-                  </div>
-                  <div :class="$style.content_itemR_box">设置默认意见</div>
-                  <div :class="$style.content_itemR_box">
-                    <dy-input placeholder="同意" />
-                  </div>
-                </div>
-              </div>
-            </div>
+            <!-- <div v-show="applyIndex === 0"></div> -->
+            <apply-first-step v-show="applyIndex === 1" :node="activity.nodeList && activity.nodeList[0] || {}"></apply-first-step>
+            <apply-second-step v-show="applyIndex === 2" :node="activity.nodeList && activity.nodeList[1] || {}"></apply-second-step>
+            <apply-third-step v-show="applyIndex === 3" :node="activity.nodeList && activity.nodeList[2] || {}"></apply-third-step>
+            <apply-fourth-step v-show="applyIndex === 4" :node="activity.nodeList && activity.nodeList[3] || {}"></apply-fourth-step>
             <div v-show="applyIndex === 5">结束</div>
           </div>
         </div>
@@ -296,16 +60,27 @@
 </template>
 <script>
 import * as applyTemplateConfig from './applyConfig'
+import ApplyFirstStep from './applyFirstStep'
+import ApplySecondStep from './applySecondStep'
+import ApplyThirdStep from './applyThirdStep'
+import ApplyFourthStep from './applyFourthStep'
+import ApplyApi from './applyApi'
 export default {
   name: '',
-  componets: {},
+  components: {
+    ApplyFirstStep,
+    ApplySecondStep,
+    ApplyThirdStep,
+    ApplyFourthStep
+  },
   props: {},
   vuex: {},
   data() {
     return {
       config: {},
-      applyIndex: 0,
-      gender: 0
+      applyIndex: 1,
+      gender: 0,
+      activity: {}
     }
   },
   computed: {},
@@ -315,7 +90,14 @@ export default {
   created() {
     this.config = applyTemplateConfig[this.$route.query.type]
   },
-  beforeMount() {},
+  beforeMount() {
+    ApplyApi.viewActivityProcess({
+      processId: this.$route.query.id || 0
+    }).then(res => {
+      console.error('res', res)
+      this.activity = res
+    })
+  },
   mounted() {}
 }
 </script>
@@ -351,70 +133,5 @@ export default {
 }
 </style>
 <style lang="less" module>
-.left_tab_container {
-  padding-top: 20px;
-  padding-right: 0px !important;
-  .left_tab_box {
-    cursor: pointer;
-    color: #666666;
-    padding: 20px 40px 20px 0;
-    text-align: right;
-    font-size: 18px;
-    &.active {
-      color: #2c5081;
-      border-right: 3px solid rgba(44, 80, 129, 1);
-    }
-  }
-}
-.step_title {
-  color: rgba(51, 51, 51, 1);
-  font-size: 18px;
-}
-.content_item {
-  display: flex;
-  //   align-items: flex-start;
-  width: 100%;
-  margin: 10px;
-  .content_itemL {
-    width: 80px;
-    height: 30px;
-    line-height: 32px;
-    text-align: right;
-    margin-right: 25px;
-    position: relative;
-    color: #333333;
-  }
-  .content_itemLD {
-    width: 80px;
-    height: 30px;
-    line-height: 30px;
-    text-align: right;
-    margin-right: 25px;
-    position: relative;
-    color: #333333;
-    &::after {
-      content: "*";
-      top: 0;
-      margin: auto;
-      color: #ff0000;
-      position: absolute;
-      width: 10px;
-      height: 18px;
-    }
-  }
-  .content_itemR {
-    display: flex;
-    //   align-items: center;
-    flex-direction: column;
-    padding: 4px 0;
-    .content_itemR_box {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-  }
-}
-.input_options {
-  border: none;
-}
+@import url("./applyStep.less");
 </style>

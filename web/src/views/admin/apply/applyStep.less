@@ -1,0 +1,78 @@
+
+.left_tab_container {
+    padding-top: 20px;
+    padding-right: 0px !important;
+    .left_tab_box {
+      cursor: pointer;
+      color: #666666;
+      padding: 16px 40px 16px 0;
+      text-align: right;
+      font-size: 16px;
+      &.active {
+        color: #2c5081;
+        border-right: 3px solid rgba(44, 80, 129, 1);
+      }
+    }
+  }
+  .step_title {
+    color: rgba(51, 51, 51, 1);
+    font-size: 18px;
+  }
+  .content_item {
+    display: flex;
+    width: 100%;
+    margin: 10px;
+    .content_itemL {
+      width: 80px;
+      height: 30px;
+      line-height: 32px;
+      text-align: right;
+      margin-right: 25px;
+      position: relative;
+      color: #333333;
+    }
+    .content_itemLD {
+      width: 80px;
+      height: 30px;
+      line-height: 30px;
+      text-align: right;
+      margin-right: 25px;
+      position: relative;
+      color: #333333;
+      &::after {
+        content: "*";
+        top: 0;
+        margin: auto;
+        color: #ff0000;
+        position: absolute;
+        width: 10px;
+        height: 18px;
+      }
+    }
+    .content_itemR {
+      display: flex;
+      //   align-items: center;
+      flex-direction: column;
+      padding: 4px 0;
+      .content_itemR_box {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+    }
+    .content_itemRInner_box {
+      display: flex;
+        align-items: center;
+      flex-direction: row;
+      padding: 4px 0 0 30px;
+      margin-bottom: 10px;
+      .content_itemR_box {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+    }
+  }
+  .input_options {
+    border: none;
+  }

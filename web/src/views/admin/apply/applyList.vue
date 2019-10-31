@@ -18,7 +18,7 @@
 <script>
 export default {
   name: '',
-  componets: {},
+  components: {},
   props: {},
   vuex: {},
   data() {
