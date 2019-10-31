@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <title>最美南粤少年</title>
+</head>
+<body>
+
+</body>
+</html>
+
+
+<script>
+  (window.onLoad = function () {
+    var userId = '%s';
+    var token = '%s';
+    var url = '%s';
+    var extraInfos = '%s';
+    sessionStorage.setItem('userInfo', JSON.stringify({
+      userId: userId,
+      token: token,
+      extraInfos: JSON.parse(extraInfos)
+    }));
+    var userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+    var data = setInterval(function () {
+      if (isNaN(Number(userInfo.userId)) === false) {
+        clearInterval(data);
+
+        if(window.location && typeof window.location.replace === "function"){
+          replace()
+        }else {
+          aClick()
+        }
+
+      }
+    }, 200);
+    function aClick() {
+      // 模拟跳转
+      var el = document.createElement('a');
+      var event = document.createEvent('MouseEvents');
+      document.body.appendChild(el);
+      event.initEvent('click', true, true);
+      if (url.indexOf('?') === -1) {
+        el.href = '/clinicCenter/'+url+'?date='+Date.now();
+      } else {
+        el.href = '/clinicCenter/'+url+'&date='+Date.now();
+      }
+      el.dispatchEvent(event);
+      document.body.removeChild(el);
+    }
+    function replace() {
+      // 重定向
+      if (url.indexOf('?') === -1) {
+        window.location.replace('/clinicCenter/'+url+'?date='+Date.now())
+      } else {
+        window.location.replace('/clinicCenter/'+url+'&date='+Date.now())
+      }
+    }
+  })()
+</script>

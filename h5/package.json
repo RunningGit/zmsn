@@ -1,0 +1,66 @@
+{
+  "name": "bink_activity",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "build:test": "vue-cli-service build --mode test",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "axios": "~0.19.0",
+    "core-js": "~2.6.5",
+    "element-ui": "~2.12.0",
+    "less-loader": "~5.0.0",
+    "lodash": "~4.17.15",
+    "md5": "~2.2.1",
+    "mint-ui": "~2.2.13",
+    "qs": "~6.7.0",
+    "vconsole": "^3.3.4",
+    "vue": "2.6.10",
+    "vue-concise-slider": "~3.4.2",
+    "vue-router": "~3.0.6",
+    "vue-video-player": "~5.0.2"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~3.8.0",
+    "@vue/cli-plugin-eslint": "~3.8.0",
+    "@vue/cli-service": "~3.8.0",
+    "babel-eslint": "~10.0.1",
+    "babel-plugin-component": "~1.1.1",
+    "compression-webpack-plugin": "^3.0.0",
+    "eslint": "~5.16.0",
+    "eslint-plugin-vue": "~5.0.0",
+    "less": "~3.10.3",
+    "lib-flexible": "~0.3.2",
+    "postcss-plugin-px2rem": "~0.8.1",
+    "px2rem-loader": "~0.1.9",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "vue-template-compiler": "2.6.10"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {},
+      "precss": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}

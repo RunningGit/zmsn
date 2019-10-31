@@ -1,0 +1,128 @@
+@navHeight: 70px;
+
+.header-cont {
+  height: @navHeight;
+  width: 100%;
+  background: #ff8245;
+  color: #fff;
+
+  &:before {
+    content: ' ';
+    width: 100%;
+    background: #ff8245;
+    position: fixed;
+    height: @navHeight;
+  }
+
+  .header {
+    height: @navHeight;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 1200px;
+    min-width: 1200px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    background: #ff8245;
+  }
+
+  .i-logo {
+    height: 44px;
+    width: 23px;
+    display: inline-block;
+    background: url(../../assets/logo.png) no-repeat;
+    background-size: 100% 100%;
+  }
+
+  .left {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: row;
+    font-size: 18px;
+    font-family: PingFang SC;
+    font-weight: bold;
+    margin-left: 95px;
+    height: 100%;
+
+    li {
+      height: 100%;
+      width: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      &.cur {
+        color: rgba(255, 255, 255, 0.7);
+        background: rgba(244, 109, 43, 1);
+        height: 100%;
+      }
+    }
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    p {
+      font-size: 24px;
+      font-family: PingFang SC;
+      font-weight: bold;
+      color: rgba(255, 255, 255, 1);
+      margin: 0 11px;
+      display: inline-block;
+    }
+  }
+
+  .status {
+    font-size: 16px;
+    font-family: PingFang SC;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+
+    .has-success,
+    .common {
+      font-size: 16px;
+      font-family: PingFang SC;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 1);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .info {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      img {
+        height: 32px;
+        width: 32px;
+      }
+
+      .name {
+        margin: 0 17px 0 11px;
+      }
+    }
+
+    .btns>span {
+      margin: 0 8px;
+      cursor: pointer;
+    }
+  }
+}
