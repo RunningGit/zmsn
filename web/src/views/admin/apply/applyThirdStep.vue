@@ -72,13 +72,17 @@
         </div>
       </div>
     </div>
+    <apply-option-setting :visible="visibleSetting" :node="node"></apply-option-setting>
   </div>
 </template>
 <script>
 import { tooltipsContent } from './applyConfig'
+import ApplyOptionSetting from './applyOptionSetting'
 export default {
   name: '',
-  components: {},
+  components: {
+    ApplyOptionSetting
+  },
   props: {
     node: {
       type: Object
@@ -87,7 +91,8 @@ export default {
   vuex: {},
   data() {
     return {
-      tooltipsContent: tooltipsContent
+      tooltipsContent: tooltipsContent,
+      visibleSetting: false
     }
   },
   computed: {},

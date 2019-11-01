@@ -40,6 +40,9 @@
             <dy-checkbox v-model="node.options4Status">关闭流程</dy-checkbox>
           </el-tooltip>
         </div>
+        <div :class="[$style.content_itemRInner_box, $style.btn_setting]" @click="visibleSetting = !visibleSetting">
+          自定义按钮方案
+        </div>
       </div>
     </div>
     <div :class="$style.content_item">
@@ -54,13 +57,17 @@
         </div>
       </div>
     </div>
+    <apply-option-setting :visible="visibleSetting" :node="node"></apply-option-setting>
   </div>
 </template>
 <script>
 import { tooltipsContent } from './applyConfig'
+import ApplyOptionSetting from './applyOptionSetting'
 export default {
   name: '',
-  components: {},
+  components: {
+    ApplyOptionSetting
+  },
   props: {
     node: {
       type: Object
@@ -69,7 +76,8 @@ export default {
   vuex: {},
   data() {
     return {
-      tooltipsContent: tooltipsContent
+      tooltipsContent: tooltipsContent,
+      visibleSetting: true
     }
   },
   computed: {},
