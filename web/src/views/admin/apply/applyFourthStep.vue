@@ -21,25 +21,32 @@
           <el-tooltip effect="dark" :content="tooltipsContent.tips1" placement="top">
             <dy-checkbox v-model="node.option1Status">审批</dy-checkbox>
           </el-tooltip>&nbsp;&nbsp;|&nbsp;&nbsp;
-          <dy-input placeholder="推荐" v-model="node.option1" :class="$style.input_options" />
+          <!-- <dy-input placeholder="推荐" v-model="node.option1" :class="$style.input_options" /> -->
+          {{ node.option1 }}
         </div>
         <div :class="$style.content_itemR_box">
           <el-tooltip effect="dark" :content="tooltipsContent.tips4" placement="top">
             <dy-checkbox v-model="node.option2Status">审批撤回</dy-checkbox>
           </el-tooltip>&nbsp;&nbsp;|&nbsp;&nbsp;
-          <dy-input placeholder="撤回推荐" v-model="node.option2" :class="$style.input_options" />
+          <!-- <dy-input placeholder="撤回推荐" v-model="node.option2" :class="$style.input_options" /> -->
+          {{ node.option2 }}
         </div>
         <div :class="$style.content_itemR_box">
           <el-tooltip effect="dark" :content="tooltipsContent.tips5" placement="top">
             <dy-checkbox v-model="node.option3Status">下个节点退审后可再次提交审批</dy-checkbox>
           </el-tooltip>&nbsp;&nbsp;|&nbsp;&nbsp;
-          <dy-input placeholder="重新推荐" v-model="node.option3" :class="$style.input_options" />
+          <!-- <dy-input placeholder="重新推荐" v-model="node.option3" :class="$style.input_options" /> -->
+          {{ node.option3 }}
         </div>
         <div :class="$style.content_itemR_box">
           <el-tooltip effect="dark" :content="tooltipsContent.tips7" placement="top">
             <dy-checkbox v-model="node.options4Status">关闭流程</dy-checkbox>
           </el-tooltip>
         </div>
+        <div
+          :class="[$style.content_itemRInner_box, $style.btn_setting]"
+          @click="visibleSetting = !visibleSetting"
+        >自定义按钮方案</div>
       </div>
     </div>
     <div :class="$style.content_item">
@@ -54,7 +61,12 @@
         </div>
       </div>
     </div>
-    <apply-option-setting :visible="visibleSetting" :node="node"></apply-option-setting>
+    <dy-modal title="自定义按钮文案" v-model="visibleSetting">
+      <apply-option-setting :node="node"></apply-option-setting>
+      <div slot="footer">
+        <dy-button type="primary" @click="visibleSetting = false">确定</dy-button>
+      </div>
+    </dy-modal>
   </div>
 </template>
 <script>

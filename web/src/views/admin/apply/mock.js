@@ -13,7 +13,7 @@ export const viewActivityProcess = {
     option4: 'option4',
     option5: 'option5',
     option6: 'option6',
-    isSuggestionOn: 0, // 是否启用审批意见,0=不启用 1=启用
+    isSuggestionOn: !!0, // 是否启用审批意见,0=不启用 1=启用
     suggestion: '同意'
   },
   {
@@ -27,7 +27,7 @@ export const viewActivityProcess = {
     option4: 'option4',
     option5: 'option5',
     option6: 'option6',
-    isSuggestionOn: 1, // 是否启用审批意见,0=不启用 1=启用
+    isSuggestionOn: !!1, // 是否启用审批意见,0=不启用 1=启用
     suggestion: '同意'
   },
   {
@@ -41,7 +41,7 @@ export const viewActivityProcess = {
     option4: 'option4',
     option5: 'option5',
     option6: 'option6',
-    isSuggestionOn: 1, // 是否启用审批意见,0=不启用 1=启用
+    isSuggestionOn: !!1, // 是否启用审批意见,0=不启用 1=启用
     suggestion: '同意'
   },
   {
@@ -55,7 +55,7 @@ export const viewActivityProcess = {
     option4: 'option4',
     option5: 'option5',
     option6: 'option6',
-    isSuggestionOn: 1, // 是否启用审批意见,0=不启用 1=启用
+    isSuggestionOn: !!1, // 是否启用审批意见,0=不启用 1=启用
     suggestion: '同意'
   }]
 }

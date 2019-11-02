@@ -1,4 +1,6 @@
 import { applyRouter } from './apply'
+import { indexConfigRouter } from './indexConfig'
+import { applyViewRouter } from './applyView'
 // let data = '-dsf' // 调度服务定时任务(微服务)
 let data = '' // 调度服务定时任务(单体服务)
 /**
@@ -27,7 +29,9 @@ var router = [
     component: resolve => require(['@/views/admin/index'], resolve),
     children: [
       // 申报管理
-      applyRouter,
+      ...applyRouter,
+      ...applyViewRouter,
+      ...indexConfigRouter,
       // 系统管理
       {
         path: 'systemMange',

@@ -1,5 +1,5 @@
 <template>
-  <dy-modal title="自定义按钮文案" v-model="visible">
+  <div>
     <div :class="$style.content_box">
       <div :class="$style.content_title">该功能可定制当前节点在前端的功能操作按钮文案，使处理人更好的理解业务场景</div>
       <div :class="$style.form_box_title">
@@ -54,21 +54,13 @@
         </div>
       </div>
     </div>
-    <div slot="footer">
-      <dy-button type="primary">确定</dy-button>
-      <dy-button @click="visible = false">取消</dy-button>
-    </div>
-  </dy-modal>
+  </div>
 </template>
 <script>
 export default {
   name: '',
   components: {},
   props: {
-    visible: {
-      type: Boolean,
-      default: false
-    },
     node: {
       type: Object
     }
@@ -78,11 +70,7 @@ export default {
     return {}
   },
   computed: {},
-  watch: {
-    node(val) {
-      console.error('node', val)
-    }
-  },
+  watch: {},
   methods: {},
   beforeCreate() {},
   created() {},
