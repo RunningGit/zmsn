@@ -16,9 +16,10 @@
                 :class="$style.notice"
                 v-if="activity.noticeOn"
                 :style="noticeColor"
-              >公告：{{ activity.noticeContent }}</div>
+              ><img src="@/views/admin/pageConfig/images/icon_gonggao.png" style="width: 14px;height: 14px;margin-right: 4px;" />公告：{{ activity.noticeContent }}</div>
               <img :src="activity.photoUrl" :class="$style.noticePic" />
               <div :class="$style.btn" :style="btnColor">{{ activity.buttonText }}</div>
+              <div :class="$style.btn_down" :style="btnColor">{{ activity.button1Text }}</div>
             </div>
           </div>
         </div>
@@ -70,16 +71,31 @@
               <span :class="$style.red_dot">*</span>
             </div>
             <div :class="$style.item_right">
-              <el-upload
-                class="avatar-uploader"
-                action="/api/admin/uploadFile"
-                :show-file-list="false"
-                :on-success="handleAvatarSuccess"
-                :before-upload="beforeAvatarUpload">
-                <img v-if="activity.photoUrl" :src="activity.photoUrl" :class="$style.avatar" >
-                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-              </el-upload>
-              <span :class="$style.limit_text">建议宽375比例像素，高度不限，大小不超过2M</span>
+              <div :class="$style.file_upload" style="margin-right: 10px;">
+                <el-upload
+                  :class="$style.avatar_uploader"
+                  action="/api/admin/uploadFile"
+                  :show-file-list="false"
+                  :on-success="handleAvatarSuccess"
+                  :before-upload="beforeAvatarUpload">
+                  <img v-if="activity.photoUrl" :src="activity.photoUrl" :class="$style.avatar" >
+                  <img v-else src="@/views/admin/pageConfig/images/pic.png" :class="$style.avatar" >
+                </el-upload>
+                移动端
+              </div>
+              <div :class="$style.file_upload">
+                <el-upload
+                  :class="$style.avatar_uploader"
+                  action="/api/admin/uploadFile"
+                  :show-file-list="false"
+                  :on-success="handleAvatarSuccess"
+                  :before-upload="beforeAvatarUpload">
+                  <img v-if="activity.photoUrl" :src="activity.photoUrl" :class="$style.avatar" >
+                  <img v-else src="@/views/admin/pageConfig/images/pic.png" :class="$style.avatar" >
+                </el-upload>
+                PC端
+              </div>
+              <span :class="$style.limit_text">移动端建议宽375像素，高度不限，大小不超过1M PC端建议宽1280像素，高度不限，大小不超过2M</span>
             </div>
           </div>
 
@@ -109,11 +125,56 @@
           </div>
 
           <div :class="$style.item_box">
-            <dy-button type="primary" style="margin:auto" size="large" @click="saveIndexConfig">保存</dy-button>
+            <div :class="$style.item_left">
+              文件下载
+              <span :class="$style.red_dot">*</span>
+            </div>
+
+            <div :class="$style.item_right_column">
+              <div :class="$style.inner_item">
+                背景颜色
+                <el-color-picker @active-change="buttonColorChange" v-model="activity.buttonColor"></el-color-picker>
+              </div>
+
+              <div :class="$style.inner_item">
+                显示文字
+                <dy-input type="textarea" v-model="activity.buttonText" width="250"></dy-input>
+              <span :class="$style.limit_text">不超过6个字</span>
+              </div>
+
+              <div :class="$style.inner_item">
+                文字颜色
+                <el-color-picker @active-change="buttonTextColorChange" v-model="activity.buttonTextColor"></el-color-picker>
+              </div>
+
+              <div :class="$style.inner_item">
+                文件上传
+                <el-upload
+                  class="upload-demo"
+                  action="https://jsonplaceholder.typicode.com/posts/"
+                  :limit="1"
+                  :on-exceed="handleExceed"
+                  :file-list="fileList">
+                  <el-button size="small" type="primary">点击上传</el-button>
+                  <!-- <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div> -->
+                </el-upload>
+              </div>
+            </div>
+          </div>
+
+          <div :class="$style.item_box">
+            <dy-button type="primary" style="margin:auto" size="large" @click="openPublishDialog = true">发布</dy-button>
           </div>
         </div>
       </div>
     </div>
+    <dy-modal v-model="openPublishDialog" title="提示" class="dy-dialog">
+      <div>发布后将立即生效，确认发布吗?</div>
+      <div slot="footer">
+        <dy-button @click="openPublishDialog = false">取消</dy-button>
+        <dy-button type="primary">确定</dy-button>
+      </div>
+    </dy-modal>
   </div>
 </template>
 <script>
@@ -125,7 +186,8 @@ export default {
   vuex: {},
   data() {
     return {
-      activity: {}
+      activity: {},
+      openPublishDialog: false
     }
   },
   computed: {
@@ -193,6 +255,34 @@ export default {
   background: url("./images/iphone.png") no-repeat;
   background-size: 100% 100%;
 }
+.dy-dialog{
+  .dy-modal-header{
+    background: white;
+    color: black;
+    .dy-icon.iconfont.icon-close{
+      color: black;
+    }
+  }
+  .dy-modal-body {
+    border-bottom: none;
+  }
+  .dy-modal-footer {
+    background: white;
+    > :first-child{
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      > :first-child {
+        margin-right: 20px;
+      }
+    }
+  }
+}
+.upload-demo {
+  display: flex;
+  align-items:center;
+}
 </style>
 <style lang="less" module>
 .contianer {
@@ -213,6 +303,7 @@ export default {
   padding: 20px;
   .right_box {
     border: 1px solid #eee;
+    background: rgba(250,250,250,1);
     .item_box,
     .item_box_column {
       border-bottom: 1px solid #eee;
@@ -250,6 +341,14 @@ export default {
           }
         }
       }
+      .avatar_uploader {
+        height: 100px;
+        width: 100px;
+        overflow: hidden;
+      }
+      .file_upload {
+        text-align: center;
+      }
     }
   }
 }
@@ -258,25 +357,28 @@ export default {
   border: 1px solid red;
   padding: 40px 0;
   .iphone_box {
-    width: 360px;
-    height: 750px;
+    width: 400px;
+    height: 781px;
     margin: auto;
     padding-top: 110px;
     .main_box {
-      height: 546px;
-      width: 310px;
+      height: 566px;
+      width: 320px;
       margin: auto;
       position: relative;
       // content
       .content_box {
-        width: 314px;
+        width: 320px;
         height: calc(100% - 40px);
         overflow-y: auto;
         background: #ffffff;
+        box-shadow: 0 0 1px 0 #eee;
         .notice {
+          background: #00A9FB;
           padding: 0 10px;
-          height: 40px;
+          height: 38px;
           font-size: 14px;
+          font-weight: bold;
           display: flex;
           align-items: center;
         }
@@ -285,17 +387,31 @@ export default {
           // height: 600px;
         }
         .btn {
-          width: 60%;
+          width: 100%;
           height: 32px;
           line-height: 32px;
-          border-radius: 8px;
+          // border-radius: 8px;
           position: absolute;
-          bottom: 10px;
-          margin: auto;
+          bottom: 0px;
+          // margin: auto;
           text-align: center;
           left: 0;
           right: 0;
           font-size: 18px;
+          font-weight: bold;
+        }
+        .btn_down {
+          width: auto;
+          height: 32px;
+          line-height: 32px;
+          // border-radius: 8px;
+          position: absolute;
+          padding: 0px 6px;
+          bottom: 0px;
+          // margin: auto;
+          text-align: center;
+          left: 0;
+          font-size: 12px;
           font-weight: bold;
         }
       }
@@ -337,8 +453,8 @@ export default {
   color: #999;
 }
 .avatar {
-  width: 160px;
-  height: 160px;
+  width: 100px;
+  height: 100px;
   display: block;
 }
 </style>

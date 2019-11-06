@@ -4,11 +4,14 @@ export const getIndexConifg = {
   noticeOn: true,
   noticeContent: 'noticeContent',
   link: 'https://www.baidu.com',
-  noticeTextColor: 'red',
+  noticeTextColor: 'rgb(255, 255, 255)',
   photoUrl: 'http://img4.imgtn.bdimg.com/it/u=2915669764,4139817696&fm=214&gp=0.jpg',
   buttonColor: 'red',
   buttonText: 'buttonText',
-  buttonTextColor: 'white'
+  buttonTextColor: 'white',
+  button1Color: 'red',
+  button1Text: '文件下载',
+  button1TextColor: 'white'
 }
 
 export const getActivityConfig = {
@@ -16,17 +19,17 @@ export const getActivityConfig = {
     id: 1,
     title: '寻找最美活动系列寻找最美',
     activityCover: 'http://img4.imgtn.bdimg.com/it/u=2915669764,4139817696&fm=214&gp=0.jpg',
-    buttonColor: 'red',
-    buttonText: 'buttonText',
+    buttonColor: '#F17E04',
+    buttonText: '申报',
     buttonTextColor: 'white',
     endDate: new Date()
   }, {
     id: 2,
     title: '寻找最美活动系列寻找最美活动系列寻找最美活动系列',
     activityCover: 'http://img4.imgtn.bdimg.com/it/u=2915669764,4139817696&fm=214&gp=0.jpg',
-    buttonColor: 'white',
-    buttonText: 'buttonText',
-    buttonTextColor: 'black',
+    buttonColor: '#F17E04',
+    buttonText: '申报',
+    buttonTextColor: 'white',
     endDate: new Date()
   }]
 }

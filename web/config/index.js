@@ -33,7 +33,7 @@ module.exports = {
     // proxyTable : {}, //默认
     proxyTable: {
       '/api': {
-        target: 'http://112.74.39.21:8090',
+        target: 'http://112.74.39.21:8080',
         changeOrigin: true,
         pathRewrite: {
           '^/api': '/'

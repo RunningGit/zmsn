@@ -96,7 +96,7 @@
               </div>
 
               <div :class="$style.inner_item">
-                选择活动
+                + 选择活动
                 <div>
 
                 </div>
@@ -266,6 +266,9 @@ export default {
   box-shadow: 0 0 1px 0 #aaa;
   padding: 10px;
   position: relative;
+  background: #fff;
+  border-radius: 4px;
+  margin-bottom: 10px;
   cursor: pointer;
   .float_panel {
     opacity: 0;
@@ -288,7 +291,7 @@ export default {
     display: flex;
     flex-direction: row;
     .left_box {
-      width: 70%;
+      width: 80%;
       overflow: hidden;
       .title {
         font-size: 14px;
@@ -310,13 +313,14 @@ export default {
     .right_box{
       display: flex;
       align-items: center;
-      width: 30%;
+      width: 20%;
       .right_box_btn {
-        border-radius: 8px;
-        font-size: 16px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: bold;
         width: 100%;
-        height: 40px;
-        line-height: 40px;
+        height: 32px;
+        line-height: 32px;
         text-align: center;
         overflow: hidden;
         white-space: nowrap;
@@ -334,23 +338,23 @@ export default {
   border: 1px solid red;
   padding: 40px 0;
   .iphone_box {
-    width: 360px;
-    height: 750px;
+    width: 400px;
+    height: 781px;
     margin: auto;
     padding-top: 110px;
     .main_box {
-      height: 546px;
-      width: 310px;
+      height: 566px;
+      width: 320px;
       margin: auto;
       position: relative;
       // content
       .content_box {
-        width: 310px;
+        width: 320px;
         height: calc(100% - 40px);
         overflow-y: auto;
         overflow-x: hidden;
-        background: #ffffff;
-        padding: 1px;
+        background: #eee;
+        padding: 10px;
       }
       // top
       .nav {
