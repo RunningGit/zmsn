@@ -1,6 +1,7 @@
 import { applyRouter } from './apply'
 import { indexConfigRouter } from './indexConfig'
 import { applyViewRouter } from './applyView'
+import { applyManageRouter } from './applyManage'
 // let data = '-dsf' // 调度服务定时任务(微服务)
 let data = '' // 调度服务定时任务(单体服务)
 /**
@@ -32,6 +33,7 @@ var router = [
       ...applyRouter,
       ...applyViewRouter,
       ...indexConfigRouter,
+      ...applyManageRouter,
       // 系统管理
       {
         path: 'systemMange',
