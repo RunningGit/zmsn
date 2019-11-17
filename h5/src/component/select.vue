@@ -24,7 +24,7 @@ export default {
         name: 'name2'
       }]
     },
-    selectedVal: '',
+    selectedVal: ,
     attr: {
       type: [Object],
       default: {
