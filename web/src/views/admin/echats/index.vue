@@ -312,6 +312,9 @@ export default {
 
   },
   mounted() {
+    // 1 先执行一次yarn add echarts
+    // 相关学习链接参考 https://www.echartsjs.com/zh/tutorial.html#%E5%9C%A8%20webpack%20%E4%B8%AD%E4%BD%BF%E7%94%A8%20ECharts
+    // 2 按照三个表，根据接口返回数据对对应填充即可
     this.setChatsO1() // 图一
     this.setChatsO2() // 图二
     this.setChatsO3() // 图三
